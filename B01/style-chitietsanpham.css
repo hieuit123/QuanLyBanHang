@@ -1,0 +1,439 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    background-color: #f5f5f5;
+     min-width: 1349px;
+}
+
+header {
+    background-color: #fff8c4;
+
+
+}
+
+.gachngang {
+    background-color: #b4b4b4;
+    border: 0px solid;
+    height: 1px;
+}
+
+#main {
+   
+
+}
+
+#linklogo {
+
+    width: 283px;
+    margin: 0 auto;
+}
+
+.box {
+    width: 475px;
+    margin: 0 auto;
+}
+
+.container-1 input {
+    width: 450px;
+    height: 35px;
+    background: #fffbf9;
+    border: none;
+    font-size: 11pt;
+    float: left;
+    color: rgb(94, 81, 81);
+    padding-left: 43px;
+    border-radius: 4px;
+
+}
+.menungang {
+
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+
+ 
+    background-color: rgb(255, 230, 148);
+}
+.dropdown{
+    position: relative;
+    display: inline-block;
+    float: right;
+    padding: 8px;
+}
+.dropdown a{
+    
+    text-decoration: none;
+    color: #363636;
+    font-size: 18px;
+    padding: 10px;
+    
+}
+.drop{
+    position: relative;
+    display: inline-block;
+    float: right;
+}
+
+.dropdown a:hover{
+    background-color: rgb(255, 167, 0);
+}
+.dropdown-content{
+    display: none;
+    position: absolute;
+    box-shadow: 0px 2px 5px 2px rgb(60, 60, 60);
+    z-index: 1;
+    min-width: 120px;
+    background-color: white;
+    width: 178px;
+    
+}
+.dropdown-content a{
+    display: block;
+    color: #525252;
+    font-family: calibri;
+    font-size: 18px;
+    text-align: left;
+    padding-left: 20px;
+}
+.dropdown-content a:hover{
+    background-color: rgb(255, 167, 0);
+}
+.btn-taikhoan
+{
+    border: none;
+    padding: 8px;
+    background-color: rgb(255, 230, 148);
+}
+.btn-taikhoan:hover{
+    background-color: rgb(255, 167, 0);
+    
+}
+
+.btn-taikhoan b{
+    color: #464646;
+    text-align: left;
+    font-size: 18px;
+    font-family: calibri;
+    
+}
+.drop:hover .dropdown-content{
+    display: block;
+}
+.drop:hover .btn-taikhoan{
+    background-color: rgb(255, 167, 0);
+}
+.fa-cart-plus{
+    margin-right: 5px;
+}
+.lia {
+    float: right;
+    padding: 0;
+    margin: 0;
+
+}
+
+.lia a {
+    display: block;
+    color: #464646;
+    text-align: left;
+    font-size: 18px;
+    padding: 8px;
+    text-decoration: none;
+    font-family: calibri;
+}
+
+.lia:hover {
+    background-color: rgb(255, 167, 0);
+}
+
+
+
+#logo {
+
+    margin-top: 30px;
+    display: inline;
+}
+
+#logosearch {
+    padding: 6px;
+    background: rgb(255, 230, 148);
+    border-radius: 4px;
+    margin-top: 1px;
+    margin-left: 2px;
+}
+#logosearch:hover {
+    background-color: rgb(255, 167, 0);
+}
+.thanhmenu {
+    width: 100%;
+    background-color: rgb(255, 230, 148);
+    margin-top: 10px;
+}
+
+.danhmuc {
+    width: 986px;
+    overflow: hidden;
+    background-color: rgb(255, 230, 148);
+    overflow: hidden;
+    list-style-type: none;
+    padding: 0;
+    margin: 0 auto;
+
+
+}
+
+.muc {
+    float: left;
+    color: #464646;
+    
+
+
+}
+
+.muc a {
+    display: inline-block;
+    text-decoration: none;
+    color: #464646;
+    font-size: 18px;
+    font-family: calibri;
+    padding: 7px 20px;
+}
+
+
+.muc:hover {
+    background-color: rgb(255, 167, 0);
+}
+
+/*     End menu   */
+/*     Start main content   */
+.main-content{
+    width: 80%;
+    margin: 0 auto;
+    background-color: white;
+    margin-top: 30px;
+}
+.chimuc{
+    margin-top: 25px;
+    margin-left: 10%;
+}
+.chimuc a{
+    color: rgb(0, 155, 107);
+    padding: 4px;
+    font-size: 18px;
+}
+.chimuc span{
+    color: rgb(0, 155, 107);
+    padding: 4px;
+    font-size: 18px;
+}
+/* Ben trai */
+.content-left{
+    float: left;
+    width: 40%;
+}
+.content-left img{
+    padding: 10%
+}
+/* Bên phải  */
+.content-right{
+    float: left;
+    width: 56%;
+    margin-right: 4%;
+}
+
+hr{
+   
+    color: #c7c7c7;
+    border: 0.5px solid #c9c9c9;
+}
+.txt-thuonghieu{
+    color: #868686;
+}
+.thuonghieu{
+    text-decoration: none;
+    color: rgb(0, 155, 107);
+}
+.thuonghieu:hover{
+    text-decoration: underline;
+}
+.tensp{
+    font-size: 1.9em;
+    margin: 0;
+    margin-top: 40px;
+    margin-bottom: 0.5em;
+    font-family: verdana;
+    color: rgb(47, 47, 47);
+}
+.price{
+    font-size: 2.1em;
+    color: #fdb900;
+}
+.donvi{
+    font-size: 1.6em;
+    color: rgb(255, 167, 0);
+}
+.giagoc{
+    color: #b4b4b4;
+    margin: 0;
+    margin-top: 5px;
+}
+.content-soluong button{
+    width: 30px;
+    height: 30px;
+    background-color: #efefef;
+    margin: 2px;
+    border: none;
+    float: left;
+}
+.content-soluong button:hover{
+    background-color: #d8d8d8;
+    
+}
+.content-soluong input{
+    width: 27px;
+    height: 28px;
+    padding:0;
+    margin: 0;
+    float: left;
+    margin-top: 2px;
+    text-align: center;
+    border: 1px solid #e0e0e0;
+}
+.content-muahang{
+    margin-top: 0.7em;
+}
+.them{
+    width: 49%;
+    border: none;
+    float: left;
+    padding: 0.7em;
+    background-color: rgb(255, 199, 92);    
+    border-radius: 3px;
+}
+.them span{
+    font-size: 1.4em;
+    font-family: verdana;
+    color: #3b3b3b;
+}
+.mualuon span{
+   font-size: 1.4em;
+    font-family: verdana;
+    color: #3b3b3b;
+}
+.mualuon{
+ width: 49%;
+    border: none;
+    float: right;
+    padding: 0.7em;
+    background-color: #ff8484;
+    border-radius: 3px;
+}
+.them:hover{
+    background-color: rgb(255, 167, 0);
+}
+.mualuon:hover{
+    background-color: rgb(255, 58, 58);
+}
+
+/* Phần mô ta sản phầm gồm 1 ảnh */
+.motasanpham{
+    width: 80%;
+    margin: 0 auto;
+    background-color: white;
+    margin-top: 30px;
+}
+.motasanpham div span{
+    font-family: sans-serif;
+    font-size: 1.2em;
+    
+    margin-left: 2em;
+    
+    
+}
+.motasanpham div{
+    background-color: rgba(221, 221, 221, 0.21);
+    width: 100%; 
+    padding: 1em 0;
+}
+#mota-img{
+    background-color: white;
+    width: 100%;
+}
+/*   Start footer*/
+.footer{
+    width: 100%;
+    background-color: #fff8c4;
+    padding: 33px 0;
+    margin-top: 30px;
+    
+}
+.footer-left{
+    width: 30%;
+    float: left;
+    margin-left: 10%;
+}
+.footer-center{
+    width: 30%;
+    float: left;
+    margin: 0;
+}
+.footer-right{
+    width: 25%;
+    float: left;
+    margin-right: 5%;
+}
+.footer-center a{
+    text-decoration: none;
+    color: #363636;
+    font-size: 1.1em;
+    font-family: calibri;
+
+}
+.footer-center span{
+    font-size: 1.7em;
+    font-family: calibri;
+    
+}.footer-right span{
+    font-size: 1.7em;
+    font-family: calibri;
+    
+}
+/* Set css cho icon */
+.fa-facebook-square{
+    color: #656598;
+    margin: 5px;
+}
+.fa-facebook-square:hover{
+    color: #1a387b;
+}
+.fa-youtube:hover{
+    color: #ff2626;
+}
+.fa-twitter-square:hover{
+    color: #0abdff;
+}
+.fa-instagram:hover{
+    color: #ff0045;
+}
+.fa-instagram{
+    color: #ff346b;
+     margin: 5px;
+}.fa-twitter-square{
+    color: #67bede;
+     margin: 5px;
+}
+.fa-youtube{
+    color:#ff3f3f;
+     margin: 5px;
+}
+.footer-left span{
+    font-size: 1.7em;
+    font-family: calibri;
+}
+
+.footer-left a{
+    text-decoration: none;
+    color: #363636;
+    font-size: 1.1em;
+    font-family: calibri;
+}

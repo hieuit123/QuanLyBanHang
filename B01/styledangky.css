@@ -1,0 +1,118 @@
+
+#login-ngaysinh {
+    margin-top: 25px;
+}
+
+.signup-matkhau {
+    margin-top: 25px;
+}
+
+#login-hoten {
+    margin-top: 25px;
+    margin-bottom: 40px;
+}
+
+.login-input {
+    width: 380px;
+    height: 35px;
+    border: 0.6px solid #ddd;
+    font-size: 14.333px;
+    padding-left: 8px;
+    margin-top: 5px;
+    font-family: sans-serif;
+}
+
+.login-input-2 {
+    width: 97%;
+    height: 35px;
+    border: 0.6px solid #ddd;
+    font-size: 14.333px;
+    padding-left: 8px;
+    margin-top: 5px;
+    font-family: sans-serif;
+
+}
+
+#login-nhaplaimatkhau {
+
+}
+
+
+#btn-login {
+    background-color: rgb(255, 230, 148);
+    border: 1px solid #e6aeae;
+    border-radius: 2px;
+    color: #986246;
+    text-align: center;
+    font-size: 19px;
+    width: 100%;
+    height: 48px;
+
+}
+
+#btn-login:hover {
+    background-color: rgb(255, 167, 0);
+    color: white;
+}
+
+#btn-login-fb {
+    background-color: #3b5998;
+    border-radius: 2px;
+    border: 0px solid white;
+    color: white;
+    text-align: center;
+    font-size: 19px;
+    width: 100%;
+    height: 48px;
+
+}
+#btn-login-fb:hover{
+    background-color: rgba(0, 74, 129, 0.73);
+}
+#link-foget-password {
+    text-align: right;
+    margin-top: 8px;
+
+
+}
+
+#txt-loginwith {
+    margin-top: 10px;
+    color: #7a7a7a;
+    margin-bottom: 10px;
+
+}
+
+#txt-foget-password {
+    color: #399df4;
+    text-decoration: none;
+
+}
+
+#txt-foget-password:hover {
+    color: #18276a;
+}
+.content-wellcome{
+    width: 48em;
+    margin: 30px auto;
+}
+#txt-wellcome {
+    width: 48em;
+    color: rgba(180, 98, 83, 0.89);
+    font-family: sans-serif;
+    font-size: 22px;
+    
+
+}
+.signup-input{
+    height: 80px;
+}
+.frame-btn-login{
+    margin-top: 10px;
+}
+#sign-up {
+
+    margin-top: 4px;
+    color: #7d7d7d;
+}
+/*   Start footer*/

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Quản lý đơn hàng</title>
+    <meta name="description" content="An interactive getting started guide for Brackets.">
+    <script type="text/javascript" src="quanlydonhang.js"></script>
+    <style>
+        .content-menu {
+            list-style-type: none;
+            background-color: #000000;
+            width: 633px;
+            padding: 0;
+            margin: 0 auto;
+        }
+
+        .content-menu li {
+            display: block;
+            float: left;
+            color: white;
+            font-size: 1.4em;
+            padding: 7px 10px;
+            margin: 0;
+        }
+
+        .content-menu li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .content-menu li:hover {
+            background-color: #b2000e;
+        }
+
+        .content-left {
+            width: 840px;
+
+            background-color: white;
+            margin-left: 5%;
+            float: left;
+        }
+
+        .content-right {
+            width: 25%;
+            float: right;
+            background-color: white;
+            margin-right: 5%;
+        }
+
+        table {
+            display: block;
+            border-collapse: collapse;
+
+
+        }
+
+        table tr {
+
+            border-bottom: 1px solid black;
+        }
+
+        table tr td {
+            color: black;
+            padding: 0.3em;
+            border-left: 1px solid black;
+            font-size: 1.1em;
+            text-align: center;
+        }
+
+        /*   Start footer*/
+        .footer {
+            width: 100%;
+            background-color: #ffcb7d;
+            padding: 33px 0;
+            margin-top: 30px;
+        }
+
+        .footer-left {
+            width: 30%;
+            float: left;
+            margin-left: 10%;
+        }
+
+        .footer-center {
+            width: 30%;
+            float: left;
+            margin: 0;
+        }
+
+        .footer-right {
+            width: 25%;
+            float: left;
+            margin-right: 5%;
+        }
+
+        .footer-center a {
+            text-decoration: none;
+            color: #363636;
+            font-size: 1.1em;
+            font-family: calibri;
+
+        }
+
+        .footer-center span {
+            font-size: 1.7em;
+            font-family: calibri;
+
+        }
+
+        .footer-right span {
+            font-size: 1.7em;
+            font-family: calibri;
+
+        }
+
+        /* Set css cho icon */
+        .fa-facebook-square {
+            color: #656598;
+            margin: 5px;
+        }
+
+        .fa-facebook-square:hover {
+            color: #1a387b;
+        }
+
+        .fa-youtube:hover {
+            color: #ff2626;
+        }
+
+        .fa-twitter-square:hover {
+            color: #0abdff;
+        }
+
+        .fa-instagram:hover {
+            color: #ff0045;
+        }
+
+        .fa-instagram {
+            color: #ff346b;
+            margin: 5px;
+        }
+
+        .fa-twitter-square {
+            color: #91b1be;
+            margin: 5px;
+        }
+
+        .fa-youtube {
+            color: #ff3f3f;
+            margin: 5px;
+        }
+
+        .footer-left span {
+            font-size: 1.7em;
+            font-family: calibri;
+        }
+
+        .footer-left a {
+            text-decoration: none;
+            color: #363636;
+            font-size: 1.1em;
+            font-family: calibri;
+        }
+    </style>
+</head>
+
+<body style="background-color: blanchedalmond;margin: 0;">
+
+    <div>
+       
+ 
+
+       
+<div style="background-color: #ffcb7d">
+        <div class="row-welcome">
+            <button style="float: right">Thoát</button>
+            <p style="float: right;margin: 0 5px;">Xin chào admin!</p>
+            <div style="clear: both"></div>
+        </div>
+        <div style="margin: 0px auto; width: 230px;"><a href="../../index.html"><img src="../../logohbshop.png" width="230px"></a></div>
+    </div>    
+    <div style="background-color: black">
+            <ul class="content-menu">
+
+                <li><a href="../../index.html">Trang chủ</a></li>
+                <li><a href="quanlydonhang.html">Quản lí đơn hàng</a></li>
+                <li><a href="quanlyuser.html"> Quản lí user</a></li>
+                <li><a href="admin.html">Sản phẩm</a></li>
+                <li><a>Thống kê</a></li>
+                <div style="clear: both"></div>
+            </ul>
+        </div>
+        <br>
+        <br>
+     <div class="content-left">
+         <br>
+       <div style="width: 200px;margin: 0 auto;">  <span style="font-size: 24px"><b>Quản lý đơn hàng</b></span>
+            </div>
+         <br>
+         <div id="content-donhang"></div>
+         <table>
+            <tr style="background-color: #b2000e">
+                <td style="color: white;width: 220px;">Tên khách hàng</td>
+                <td style="color: white;width: 170px;">Thời gian đặt hàng</td>
+                <td style="color: white;width: 200px;">Tổng tiền</td>
+                <td style="color: white;width: 202px;">Trạng thái</td>
+                
+                </tr>
+                <tr>
+                <td>Trần Minh Hiếu</td>
+                    <td>14-12-2018</td>
+                    <td>5.000.000 VND</td>
+                    <td>Đã xử lý</td>
+                </tr>
+                <tr>
+                <td>Trần Thị Thúy An</td>
+                    <td>15-12-2018</td>
+                    <td>1.000.000 VND</td>
+                    <td>Chưa xử lý</td>
+                </tr>
+                <tr>
+                <td>Trần Quốc Bảo</td>
+                    <td>14-12-2018</td>
+                    <td>15.000.000 VND</td>
+                    <td>Chưa xử lý</td>
+                </tr>
+                <tr>
+                <td>Trần Viết Thanh Hải</td>
+                    <td>14-12-2018</td>
+                    <td>5.000.000 VND</td>
+                    <td>Đã xử lý</td>
+                </tr>
+                <tr>
+                <td>Nguyễn Đình Sang</td>
+                    <td>17-12-2018</td>
+                    <td>3.000.000 VND</td>
+                    <td>Chưa xử lý</td>
+                </tr>
+                <tr>
+                <td>Trần Minh Nguyên</td>
+                    <td>11-12-2018</td>
+                    <td>3.000.000 VND</td>
+                    <td>Đã xử lý</td>
+                </tr>
+                <tr>
+                <td>Nguyễn Đình Trọng</td>
+                    <td>14-12-2018</td>
+                    <td>2.000.000 VND</td>
+                    <td>Chưa xử lý</td>
+                </tr>
+                <tr>
+                <td>Trần Minh Hiếu</td>
+                    <td>14-12-2018</td>
+                    <td>5.000.000 VND</td>
+                    <td>Đã xử lý</td>
+                </tr>
+                <tr>
+                <td>Trần Minh Hiếu</td>
+                    <td>14-12-2018</td>
+                    <td>5.000.000 VND</td>
+                    <td>Đã xử lý</td>
+                </tr>
+                <tr>
+                <td>Trần Minh Hiếu</td>
+                    <td>14-12-2018</td>
+                    <td>5.000.000 VND</td>
+                    <td>Đã xử lý</td>
+                </tr>
+                <tr>
+                <td>Trần Minh Hiếu</td>
+                    <td>14-12-2018</td>
+                    <td>5.000.000 VND</td>
+                    <td>Đã xử lý</td>
+                </tr>
+                <tr>
+                <td>Trần Minh Hiếu</td>
+                    <td>14-12-2018</td>
+                    <td>5.000.000 VND</td>
+                    <td>Đã xử lý</td>
+                </tr>
+                
+         </table>
+        </div>
+        <div class="content-right">
+            <br>
+            <div style="width: 100px; margin: 0 auto;"><span style="font-size: 24px"><b>Tìm kiếm</b></span></div>
+            <br>
+            <span style="margin-left: 50px">Từ ngày:&nbsp;&nbsp;&nbsp;</span><input type="date"><br><br>
+            <span style="margin-left: 50px">Đến ngày:&nbsp;</span><input type="date">
+            <br>
+            <br>
+            <div style="margin: 0 auto; width: 90px"> <input style="width: 90px;height: 30px;" type="button" value="Tìm kiếm"></div>
+            
+            
+        <br>
+        
+        
+    </div>
+           <div style="clear: left"></div>
+      
+        <br>
+        <div class="footer">
+            <div class="footer-left">
+                <span><span style="color: #000000;font-size: 1.6em">H</span>&B shop</span><br>
+                <a href="#gioithieu">Giới thiệu H&B</a><br>
+                <a href="#tuyendung">Tuyển dụng</a><br>
+                <a href="#tuyendung">Chính sách bảo mật và thanh toán</a><br>
+                <a href="#tuyendung">Chính sách bảo mật thông tin cá nhân</a><br>
+                <a href="#tuyendung">Điều khoản sử dụng</a>
+
+            </div>
+            <div class="footer-center">
+                <span><span style="color: #000000;font-size: 1.6em">H</span>ỗ trợ cửa hàng</span><br>
+                <a href="#tuyendung">Giờ làm việc: Mở cửa lúc 7h-18h<br>(<i>Làm việc kể cả chủ nhật</i>)</a><br>
+                <a href="#hotline">Hotline:(+84) 328729739<br><i>(Nhấn phím 1 để gặp Anh Hiếu)</i></a><br>
+                <a href="#hotro">Các câu hỏi thường gặp</a>
+
+            </div>
+            <div class="footer-right">
+                <span><span style="color: #000000;font-size: 1.6em">K</span>ết nối với chúng tôi</span><br>
+                <i class="fab fa-facebook-square fa-3x"></i>
+                <i class="fab fa-instagram fa-3x"></i>
+                <i class="fab fa-twitter-square fa-3x"></i>
+                <i class="fab fa-youtube fa-3x"></i>
+
+
+            </div>
+<div style="clear: left"></div>
+         
+        </div>
+         </div>
+</body>
+</html>

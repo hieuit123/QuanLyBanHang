@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styledangky.css">
+    <link rel="stylesheet" href="fontawesome-free-5.5.0-web/css/all.css">
+
+    <title>H&B-Shop quần áo</title>
+    <script type="text/javascript">
+        var array_taikhoan = JSON.parse(localStorage.getItem("taikhoan"));
+        if(sessionStorage.getItem("ktdangky") == 1 ) {
+            sessionStorage.setItem("ktdangky",0);
+            window.location = "dangnhap.html";
+        }
+        function capnhat_taikhoan(){
+            localStorage.setItem("taikhoan",JSON.stringify(array_taikhoan));
+        }
+        function kiemtra() {
+            k = true;
+            var ten = document.getElementById("account").value;
+            var matkhau = document.getElementById("pass").value;
+            var nhaplaimk = document.getElementById("repass").value;
+            if (ten == "") alert("Bạn chưa nhập tên tài khoản!"), k = false;
+            if (matkhau == "") alert("Bạn chưa nhập mật khẩu!"), k = false;
+            if (matkhau != nhaplaimk) alert("Mật khẩu nhập lại không đúng!"), k = false;
+            var temp_taikhoan = {} ;
+            for(var i = 0; i < array_taikhoan.taikhoan.length ; i++){
+                if(ten == array_taikhoan.taikhoan[i].tendangnhap){
+                    alert("Tên tài khoản đã tồn tại!");
+                    return false;
+                }
+            }
+            var today = new Date();
+            temp_taikhoan.tendangnhap = ten;
+            temp_taikhoan.matkhau = matkhau;
+            var month = today.getMonth() +1;
+            temp_taikhoan.ngaydangky = today.getDate()+'-'+month+'-'+today.getFullYear();
+            if (k) {
+                array_taikhoan.taikhoan.unshift(temp_taikhoan);
+                capnhat_taikhoan();
+                alert("Đăng kí thành công!");
+                sessionStorage.setItem("ktdangky",1);
+                window.location = "dangnhap.html";
+            }
+            return k;
+        }
+
+    </script>
+</head>
+
+
+<body onload="loadsp()">
+
+    <header>
+        <script type="text/javascript" src="loadsanpham.js"></script>
+        <ul class="menungang">
+
+
+            <li class="lia"><a href="#giohang"><i class="fas fa-cart-plus"></i><b>Giỏ hàng</b></a></li>
+            <li class="lia"><a href="dangnhap.html"><i class="fas fa-user"></i><b> Đăng nhập</b></a></li>
+            <div id="xinchao">
+                <div class="lia"><a href="dangky.html"><b><i class="fas fa-user"></i> Đăng kí</b></a></div>
+            </div>
+
+        </ul>
+        <div id="linklogo">
+            <a id="trangchu" href="index.html"> <img id="logo" src="logohbshop.png" alt="H&B" width=",250px" height="125px"></a>
+        </div>
+        <div class="box">
+            <div class="container-1">
+                <input type="search" id="search" placeholder="Tìm kiếm...">
+            </div>
+        </div>
+        <img id="logosearch" src="iconsearch.png" alt="search" width="22px" height="22px">
+        <div class="thanhmenu">
+            <ul class="danhmuc">
+                <li class="muc"><a href="index.html?newarrivals&0"><b>Bán chạy</b></a></li>
+                <li class="muc"><a href="index.html?non&0"><b>Nón</b></a></li>
+                <li class="muc"><a href="index.html?tuixach&0"><b>Túi Xách</b></a></li>
+                <li class="muc"><a href="index.html?ao&0"><b>Áo</b></a></li>
+                <li class="muc"><a href="index.html?daynit&0"><b>Dây Nịt</b></a></li>
+                <li class="muc"><a href="index.html?giay&0"><b>Giày</b></a></li>
+                <li class="muc"><a href="index.html?quan&0"><b>Quần</b></a></li>
+                <li class="muc"><a href="index.html?aokhoac&0"><b>Áo khoác</b></a></li>
+                <li class="muc"><a href="index.html?vongtay&0"><b>Vòng Tay</b></a></li>
+                <li class="muc"><a href="index.html?dongho&0"><b>Đồng Hồ</b></a></li>
+
+            </ul>
+        </div>
+    </header>
+    <div class="main-content">
+        <div class="content-wellcome">
+        <p id="txt-wellcome">Chào mừng bạn đến với shop H&B style!</p>
+            </div>
+        <form method="post" onsubmit="kiemtra()">
+            <div id="login">
+                <div id="login-col-1">
+                    <div id="login-taikhoan">
+                        <label class="input-label">Tài khoản *</label><br>
+                        <input class="login-input" type="text" id="account" placeholder="Tên đăng nhập" name="taikhoan">
+                    </div>
+
+                    <div id="login-matkhau">
+                        <div>
+                            <label class="input-label">Mật khẩu *</label><br>
+                            <input class="login-input" type="password" id="pass" placeholder="Mật khẩu có ít nhất 8 kí tự" name="matkhau">
+                        </div>
+
+                        <div id="login-nhaplaimatkhau">
+                            <label class="input-label">Nhập lại mật khẩu *</label><br>
+                            <input class="login-input" type="password" id="repass" placeholder="Nhập lại mật khẩu" name="matkhau">
+                        </div>
+
+                        <div id="login-ngaysinh">
+                            <label class="input-label">Ngày sinh *</label><br>
+                            <input class="login-input" type="text" id="birthday" placeholder="dd/MM/YYYY" name="ngaysinh">
+                        </div>
+
+
+                    </div>
+                </div>
+                <div id="login-col-2">
+                    <div id="login-email">
+                        <label class="input-label">Email *</label><br>
+                        <input class="login-input-2" type="text" id="email" placeholder="Địa chỉ email" maxlength="35" name="taikhoan">
+                    </div>
+                    <div id="login-hoten">
+                        <label class="input-label">Họ và tên *</label><br>
+                        <input class="login-input-2" type="text" id="email" placeholder="Họ tên" maxlength="35" name="taikhoan">
+                    </div>
+                    <div><input type="submit" id="btn-login" value="Đăng kí"></div>
+                    <div id="txt-loginwith"><span>Hoặc đăng kí bằng bằng:</span></div>
+                    <div><button id="btn-login-fb">Facebook</button></div>
+
+                </div>
+
+                <div style="clear: both"></div>
+            </div>
+
+        </form>
+    </div>
+    <div class="footer">
+        <div class="footer-left">
+            <span><span style="color: #e02121;font-size: 1.6em">H</span>&B shop</span><br>
+            <a href="#gioithieu">Giới thiệu H&B</a><br>
+            <a href="#tuyendung">Tuyển dụng</a><br>
+            <a href="#tuyendung">Chính sách bảo mật và thanh toán</a><br>
+            <a href="#tuyendung">Chính sách bảo mật thông tin cá nhân</a><br>
+            <a href="#tuyendung">Điều khoản sử dụng</a>
+
+        </div>
+        <div class="footer-center">
+            <span><span style="color: #e02121;font-size: 1.6em">H</span>ỗ trợ cửa hàng</span><br>
+            <a href="#tuyendung">Giờ làm việc: Mở cửa lúc 7h-18h<br>(<i>Làm việc kể cả chủ nhật</i>)</a><br>
+            <a href="#hotline">Hotline:(+84) 328729739<br><i>(Nhấn phím 1 để gặp Anh Hiếu)</i></a><br>
+            <a href="#hotro">Các câu hỏi thường gặp</a>
+
+        </div>
+        <div class="footer-right">
+            <span><span style="color: #e02121;font-size: 1.6em">K</span>ết nối với chúng tôi</span><br>
+            <i class="fab fa-facebook-square fa-3x"></i>
+            <i class="fab fa-instagram fa-3x"></i>
+            <i class="fab fa-twitter-square fa-3x"></i>
+            <i class="fab fa-youtube fa-3x"></i>
+
+
+        </div>
+
+        <div style="clear: left"></div>
+    </div>
+</body>
+
+</html>
