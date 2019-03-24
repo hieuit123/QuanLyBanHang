@@ -36,40 +36,7 @@
             if (matkhau != nhaplaimk) alert("Mật khẩu nhập lại không đúng!"), check = false;
              return check;
         }
-        function kt_ngay(ngay,thang,nam){
-            var kiemtra = true;
-            switch(thang){
-                case 1 : if(ngay > 31 ) kiemtra = false;
-                         break;
-                case 2: if(nam % 4 == 0 && nam%100 != 0){
-                    if(ngay > 29) kiemtra = false;
-                      } 
-                    else if(ngay > 28 ) kiemtra =  false;
-                    break; 
-                case 3: if(ngay > 31 ) kiemtra = false;
-                         break;
-                case 4: if(ngay > 30 ) kiemtra = false;
-                         break;
-                case 5: if(ngay > 31 ) kiemtra = false;
-                         break;
-                case 6: if(ngay > 30 ) kiemtra = false;
-                         break;
-                case 7: if(ngay > 31 ) kiemtra = false;
-                         break;
-                case 8: if(ngay > 31 ) kiemtra = false;
-                         break;
-                case 9: if(ngay > 30 ) kiemtra = false;
-                         break;
-                case 10: if(ngay > 31 ) kiemtra = false;
-                         break;
-                case 11: if(ngay > 30 ) kiemtra = false;
-                         break;
-                case 12: if(ngay > 31 ) kiemtra = false;
-                         break;
-                default: kiemtra = false;
-            }
-            return kiemtra;
-        }
+        
 
     </script>
 

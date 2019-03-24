@@ -1,7 +1,4 @@
 
-window.onload = function () {
-    loadgiohang();
-};
 var objSanpham;
 var objTaikhoan;
 var array_giohang = [];

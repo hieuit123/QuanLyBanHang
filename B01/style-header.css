@@ -1,0 +1,222 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    background-color: #f5f5f5;
+     min-width: 1349px;
+}
+
+header {
+    background-color: #fff8c4;
+
+
+}
+.gachngang {
+    background-color: #b4b4b4;
+    border: 0px solid;
+    height: 1px;
+}
+
+#main {
+   
+
+}
+
+#linklogo {
+
+    width: 283px;
+    margin: 0 auto;
+}
+.btn-search{
+    background-color: rgb(255, 217, 91);
+    border: none;
+    border-left: 5px solid  #fff8c4;
+     height: 33px;
+     border-radius: 7px;
+     color: #666;
+}
+
+.box {
+    width: 475px;
+    margin: 0 auto;
+}
+
+.container1 input {
+    width: 450px;
+    height: 35px;
+    background: #fffbf9;
+    border: none;
+    font-size: 11pt;
+    float: left;
+    color: rgb(94, 81, 81);
+    padding-left: 43px;
+    border-radius: 4px;
+
+}
+
+.menungang {
+
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+
+    
+    background-color: rgb(255, 230, 148);
+}
+.fa-cart-plus{
+    margin-right: 5px;
+}
+.dropdown{
+    position: relative;
+    display: inline-block;
+    float: right;
+    padding: 8px;
+}
+#xinchao{
+    float: right;
+    
+}
+.content_xinchao{
+    font-family: calibri;
+    padding: 8.5px;
+    
+}
+.dropdown a{
+    
+    text-decoration: none;
+    color: #363636;
+    font-size: 18px;
+    padding: 10px;
+    font-family: calibri;
+}
+.drop{
+    position: relative;
+    display: inline-block;
+    float: right;
+}
+
+.dropdown a:hover{
+    background-color: rgb(255, 167, 0);
+}
+.dropdown-content{
+    display: none;
+    position: absolute;
+    box-shadow: 0px 2px 5px 2px rgb(60, 60, 60);
+    z-index: 1;
+    min-width: 120px;
+    background-color: white;
+    width: 178px;
+    
+}
+.dropdown-content a{
+    display: block;
+    color: #525252;
+    font-family: calibri;
+    font-size: 18px;
+    text-align: left;
+    padding-left: 20px;
+    text-decoration: none;
+}
+.dropdown-content a:hover{
+    background-color: rgb(255, 167, 0);
+}
+.btn-taikhoan
+{
+    border: none;
+    padding: 8px;
+    background-color: rgb(255, 230, 148);
+}
+.btn-taikhoan:hover{
+    background-color: rgb(255, 167, 0);
+    
+}
+
+.btn-taikhoan b{
+    color: #464646;
+    text-align: left;
+    font-size: 18px;
+    font-family: calibri;
+    
+}
+.drop:hover .dropdown-content{
+    display: block;
+}
+.drop:hover .btn-taikhoan{
+    background-color: rgb(255, 167, 0);
+}
+.lia {
+    float: right;
+    padding: 0;
+    margin: 0;
+
+}
+
+.lia a {
+    display: block;
+    color: #464646;
+    text-align: left;
+    font-size: 18px;
+    padding: 8px;
+    text-decoration: none;
+    font-family: calibri;
+}
+
+.lia:hover {
+    background-color: rgb(255, 167, 0);
+}
+
+
+
+#logo {
+
+    margin-top: 30px;
+    display: inline;
+}
+
+#logosearch {
+    padding: 6px;
+    background: rgb(255, 230, 148);
+    border-radius: 4px;
+    margin-top: 1px;
+    margin-left: 2px;
+}
+#logosearch:hover {
+    background-color: rgb(255, 167, 0);
+}
+.thanhmenu {
+    width: 100%;
+    background-color: rgb(255, 230, 148);
+    margin-top: 10px;
+}
+
+.danhmuc {
+    width: 986px;
+    overflow: hidden;
+    background-color: rgb(255, 230, 148);
+    overflow: hidden;
+    list-style-type: none;
+    padding: 0;
+    margin: 0 auto;
+
+
+}
+
+.muc {
+    float: left;
+    color: #464646;
+    
+
+
+}
+
+.muc a {
+    display: inline-block;
+    text-decoration: none;
+    color: #464646;
+    font-size: 18px;
+    padding: 7px 20px;
+    font-family: calibri;   
+}
+
+.muc:hover {
+    background-color: rgb(255, 167, 0);
+}

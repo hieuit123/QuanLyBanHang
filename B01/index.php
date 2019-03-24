@@ -1,5 +1,11 @@
  <?php 
-    session_start(); ?>
+    session_start(); 
+    $kt_login = (isset($_SESSION['login'])) ? $_SESSION['login'] : false;
+    if($kt_login == 'true') {
+        echo '<script>alert("Đăng nhập thành công");</script>';
+        $_SESSION['login'] = 'false';
+    }
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 

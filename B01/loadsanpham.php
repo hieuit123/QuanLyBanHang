@@ -49,7 +49,7 @@
                         ++$dem;
                         if($dem%6 != 0){
                         echo '<div class="item-row1">'.
-                        '<a href="chitietsanpham.html? idsanpham='.$row['MA'].'">' .
+                        '<a href="chitietsanpham.php? idsanpham='.$row['MA'].'">' .
                         '<img class="img-content" src="'. $row['ANH'].'">'.
                         '<div class="info">'.
                         '<p class="label-sanpham1">'.$row['TEN_SANPHAM'].'</p>'.
@@ -59,7 +59,7 @@
                         }
                         else {
                             echo '<div class="item-row1-tail">'.
-                        '<a href="chitietsanpham.html?'.$row['MA_LOAI'].'='.$row['MA'].'">' .
+                        '<a href="chitietsanpham.php?idsanpham='.$row['MA'].'">' .
                         '<img class="img-content" src="'. $row['ANH'].'">'.
                         '<div class="info">'.
                         '<p class="label-sanpham1">'.$row['TEN_SANPHAM'].'</p>'.

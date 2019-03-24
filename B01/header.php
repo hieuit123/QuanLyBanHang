@@ -1,13 +1,13 @@
 <header>
        <?php 
-            $check_login = (isset($_SESSION['login']) == 'true') ? $_SESSION['login'] : 'false';
+            $check_login = (isset($_SESSION['login'])) ? $_SESSION['login'] : false;
             $ho_ten = (isset($_SESSION['tendangnhap']) == 'true') ? $_SESSION['tendangnhap'] : ""; 
 
        ?> 
         <div class="menungang">
-                       <div class="lia"><a href="#" onclick="checkgiohang()"><i class="fas fa-cart-plus"></i><b>Giỏ hàng</b></a></div>
+                       <div class="lia"><a href="giohang.php" ><i class="fas fa-cart-plus"></i><b>Giỏ hàng</b></a></div>
             <div id="drop-hide">
-                <?php if($check_login == 'true') echo '<div class="drop" id="dangnhap"><button class="btn-taikhoan"><b><i class="fas fa-user"></i> Tài khoản</b></button>
+                <?php if($check_login) echo '<div class="drop" id="dangnhap"><button class="btn-taikhoan"><b><i class="fas fa-user"></i> Tài khoản</b></button>
             <div id="mydrop" class="dropdown-content">
             <a>Thông tin tài khoản</a>
             <a href="donhang.html">Quản lý đơn hàng</a>
@@ -21,8 +21,8 @@
 
                 </div>
             <div id="xinchao">
-                <?php if($check_login == 'true') echo '<div class="content_xinchao" ><b>Xin chào, '.$ho_ten.'</b></div>'; ?> 
-                <?php if($check_login == 'false') echo '<div class="lia"><a href="index.php?form_dangky=true"><b><i class="fas fa-user"></i> Đăng kí</b></a></div>'; ?>
+                <?php if($check_login) echo '<div class="content_xinchao" ><b>Xin chào, '.$ho_ten.'</b></div>'; ?> 
+                <?php if(!$check_login) echo '<div class="lia"><a href="index.php?form_dangky=true"><b><i class="fas fa-user"></i> Đăng kí</b></a></div>'; ?>
             </div>
             
         <div style="clear: right"></div>
@@ -45,16 +45,16 @@
         
             <div class="thanhmenu">
             <ul class="danhmuc">
-                <li class="muc"><a href="index.html?newarrivals&0"><b>Bán chạy</b></a></li>
-                <li class="muc"><a href="index.html?non&0"><b>Nón</b></a></li>
-                <li class="muc"><a href="index.html?tuixach&0"><b>Túi Xách</b></a></li>
-                <li class="muc"><a href="index.php?muc=ao&pg=0"><b>Áo</b></a></li>
-                <li class="muc"><a href="index.html?daynit&0"><b>Dây Nịt</b></a></li>
-                <li class="muc"><a href="index.html?giay&0"><b>Giày</b></a></li>
-                <li class="muc"><a href="index.html?quan&0"><b>Quần</b></a></li>
-                <li class="muc"><a href="index.html?aokhoac&0"><b>Áo khoác</b></a></li>
-                <li class="muc"><a href="index.html?vongtay&0"><b>Vòng Tay</b></a></li>
-                <li class="muc"><a href="index.html?dongho&0"><b>Đồng Hồ</b></a></li>
+                <li class="muc"><a href="index.php?muc=trangchu&pg=0&form=search"><b>Bán chạy</b></a></li>
+                <li class="muc"><a href="index.php?muc=non&pg=0&form=search"><b>Nón</b></a></li>
+                <li class="muc"><a href="index.php?muc=tuixach&pg=0&form=search"><b>Túi Xách</b></a></li>
+                <li class="muc"><a href="index.php?muc=ao&pg=0&form=search"><b>Áo</b></a></li>
+                <li class="muc"><a href="index.php?muc=daynit&pg=0&form=search"><b>Dây Nịt</b></a></li>
+                <li class="muc"><a href="index.php?muc=giay&pg=0&form=search"><b>Giày</b></a></li>
+                <li class="muc"><a href="index.php?muc=quan&pg=0&form=search"><b>Quần</b></a></li>
+                <li class="muc"><a href="index.php?muc=aokhoac&pg=0&form=search"><b>Áo khoác</b></a></li>
+                <li class="muc"><a href="index.php?muc=vongtay&pg=0&form=search"><b>Vòng Tay</b></a></li>
+                <li class="muc"><a href="index.php?muc=dongho&pg=0&form=search"><b>Đồng Hồ</b></a></li>
 
             </ul>
         </div>

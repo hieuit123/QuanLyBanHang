@@ -1,3 +1,4 @@
+
 body {
     margin: 0px;
     padding: 0px;
@@ -10,7 +11,6 @@ header {
 
 
 }
-
 .gachngang {
     background-color: #b4b4b4;
     border: 0px solid;
@@ -27,13 +27,21 @@ header {
     width: 283px;
     margin: 0 auto;
 }
+.btn-search{
+    background-color: rgb(255, 217, 91);
+    border: none;
+    border-left: 5px solid  #fff8c4;
+     height: 33px;
+     border-radius: 7px;
+     color: #666;
+}
 
 .box {
     width: 475px;
     margin: 0 auto;
 }
 
-.container-1 input {
+.container1 input {
     width: 450px;
     height: 35px;
     background: #fffbf9;
@@ -45,14 +53,18 @@ header {
     border-radius: 4px;
 
 }
+
 .menungang {
 
     list-style-type: none;
     margin: 0px;
     padding: 0px;
 
- 
+    
     background-color: rgb(255, 230, 148);
+}
+.fa-cart-plus{
+    margin-right: 5px;
 }
 .dropdown{
     position: relative;
@@ -60,13 +72,22 @@ header {
     float: right;
     padding: 8px;
 }
+#xinchao{
+    float: right;
+    
+}
+.content_xinchao{
+    font-family: calibri;
+    padding: 8.5px;
+    
+}
 .dropdown a{
     
     text-decoration: none;
     color: #363636;
     font-size: 18px;
     padding: 10px;
-    
+    font-family: calibri;
 }
 .drop{
     position: relative;
@@ -94,6 +115,7 @@ header {
     font-size: 18px;
     text-align: left;
     padding-left: 20px;
+    text-decoration: none;
 }
 .dropdown-content a:hover{
     background-color: rgb(255, 167, 0);
@@ -121,9 +143,6 @@ header {
 }
 .drop:hover .btn-taikhoan{
     background-color: rgb(255, 167, 0);
-}
-.fa-cart-plus{
-    margin-right: 5px;
 }
 .lia {
     float: right;
@@ -195,10 +214,9 @@ header {
     text-decoration: none;
     color: #464646;
     font-size: 18px;
-    font-family: calibri;
     padding: 7px 20px;
+    font-family: calibri;   
 }
-
 
 .muc:hover {
     background-color: rgb(255, 167, 0);
@@ -277,21 +295,21 @@ hr{
     margin: 0;
     margin-top: 5px;
 }
-.content-soluong button{
+.btn-giam{
     width: 30px;
-    height: 30px;
+    height: 33px;
     background-color: #efefef;
     margin: 2px;
     border: none;
     float: left;
 }
-.content-soluong button:hover{
+.btn-giam:hover{
     background-color: #d8d8d8;
     
 }
 .content-soluong input{
-    width: 27px;
-    height: 28px;
+    width: 28px;
+    height: 30px;
     padding:0;
     margin: 0;
     float: left;
