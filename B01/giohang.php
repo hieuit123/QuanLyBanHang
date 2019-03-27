@@ -20,7 +20,7 @@
 
     session_start();
     $kt_xoatatca = (isset($_GET['xoatatca'])) ? $_GET['xoatatca'] : false;
-    if($kt_xoatatca) session_destroy();
+    if($kt_xoatatca) $_SESSION['giohang'] = null;
     class SanPham{
     public $ma;
     public $ten;
@@ -62,6 +62,7 @@ else $array_giohang = array();
         <!-- Content san pham start -->
         <div id="danhsach-sp">
             <?php 
+                if($array_giohang == null) echo '<div style="width:200px;margin:0 auto;color:#ff7400;"><h2>Giỏ hàng trống !</h2></div>';
                 $tong_soluong = 0;
                 $tong_tien = 0;
                 foreach ($array_giohang as $key => $value) {
@@ -84,6 +85,8 @@ else $array_giohang = array();
                 $tong_tien = $value->gia*$value->soluong + $tong_tien;
                 $tong_soluong = $value->soluong + $tong_soluong;
                 }
+
+
             ?>
             <!-- Content san pham end-->
             </div>
@@ -96,7 +99,7 @@ else $array_giohang = array();
                 <div class="title-donhang"><span>Thông tin đơn hàng</span></div>
                 <div id="tongsl">Số sản phẩm: <span id="tongslsp"><?php echo $tong_soluong; ?></span></div>
                 <div id="tongcong">Tổng cộng: <span id="tongcongtien"><?php echo str_replace(",", ".", number_format($tong_tien)) ?></span></div>
-                <div><button class="btn-muahang" onclick="muahang()">Mua hàng</button></div>
+                <div><a href="xuly_muahang.php"><button class="btn-muahang">Mua hàng</button></a></div>
             </div>
         </div>
         <div style="clear: both"></div>

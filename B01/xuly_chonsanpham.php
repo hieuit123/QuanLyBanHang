@@ -44,5 +44,4 @@ $url = "location: chitietsanpham.php?idsanpham=".$tempsanpham->ma;
 $_SESSION['giohang'] = json_encode($array_giohang);
 $_SESSION['dachon'] = 'true';
 header($url);
-
- ?>
+?>

@@ -12,7 +12,9 @@
     if($matkhau === $row['MAT_KHAU']) {
         $_SESSION["login"]='true';
         $_SESSION['tendangnhap'] = $row['HO_TEN'];
-        
+        $_SESSION['ma_khach_hang'] = $row['ID'];
+        $_SESSION['sdt_khachhang'] = $row['SDT'];
+        $_SESSION['thongbao_thatbai'] = 'false';
        header('location: index.php');
 
     }

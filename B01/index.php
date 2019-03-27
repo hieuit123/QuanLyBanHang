@@ -1,10 +1,15 @@
  <?php 
     session_start(); 
-    $kt_login = (isset($_SESSION['login'])) ? $_SESSION['login'] : false;
-    if($kt_login == 'true') {
-        echo '<script>alert("Đăng nhập thành công");</script>';
-        $_SESSION['login'] = 'false';
+    //$kt_login = (isset($_SESSION['thongbao_thatbai'])) ? $_SESSION['thongbao_thatbai'] : true;
+    if(isset($_SESSION['thongbao_thatbai'])){
+        $kt_login = $_SESSION['thongbao_thatbai'];
     }
+    else $kt_login = 'exeption';
+    if($kt_login == 'false') {
+        echo '<script>alert("Đăng nhập thành công");</script>';
+        $_SESSION['thongbao_thatbai'] = 'true';
+    }
+    $dulieu_timkiem =  (isset($_GET["dl_timkiem"])) ? $_GET["dl_timkiem"] : null;
     ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +44,7 @@
     
     <div class="main-content">
 
-        <?php  if((!$formdangnhap && !$formdangky)) include('banner.php');
+        <?php  if((!$formdangnhap && !$formdangky && $dulieu_timkiem == null)) include('banner.php');
          ?>
         <div class="nav-left">
             <img src="image/quangcaor.png" height="1px">

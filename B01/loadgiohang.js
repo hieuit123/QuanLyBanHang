@@ -19,6 +19,7 @@ function logout(){
     document.getElementById("drop-hide").innerHTML='<div class="dropdown" id="dangnhap"><a href="dangnhap.html"><b><i class="fas fa-user"></i> Đăng nhập</b></a>'+
             '</div></div>';
 }
+alert("DD");window.location = "index.php?form_dangnhap=true";   
 function checkgiohang(){
     var x= parseInt(sessionStorage.getItem("login"));
     if(x) {
