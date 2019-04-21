@@ -21,7 +21,7 @@ function thongbao(check){
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
     $conn->close();
-    if($tentaikhoan == 'admin' && $matkhau === $row['MAT_KHAU']) header('location: web/admin/admin.html');
+    if($tentaikhoan == 'admin' && $matkhau === $row['MAT_KHAU']) echo '<script>window.location = "wep/admin";</script>';
     if($matkhau === $row['MAT_KHAU']) {
         $_SESSION["login"]='true';
         $_SESSION['tendangnhap'] = $row['HO_TEN'];

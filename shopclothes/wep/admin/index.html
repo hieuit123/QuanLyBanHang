@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <title>Admin</title>
+    <style type="text/css">
+        td{
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th{
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        table{
+            width: 100%;
+        }
+        td img{
+            width: 100px;
+        }
+        .tieude{
+            width: 260px;
+            margin: 40px auto;
+            font-weight: 800;
+            font-size: 30px;
+        }
+        .txt_form{
+            padding: 6.5px;
+             border: 1px solid #ddd;
+        }
+        .input_form{
+            padding: 4.5px;
+            border: 1px solid #ddd;
+        }
+        .content-them{
+             border: 1px solid black;
+
+        }
+        .content-sua{
+             border: 1px solid black;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="tieude">Quản lí sản phẩm</div>
+    <table>
+        <tr>
+            <th>Mã sản phẩm</th>
+            <th>Tên sản phẩm</th>
+            <th>Thương hiệu</th>
+            <th>Giá</th>
+            <th>Ảnh</th>
+            <th>Xóa</th>
+        </tr>
+        <tr>
+            <td>AO1</td>
+            <td>Áo thun Adidas</td>
+            <td>Adidas</td>
+            <td>2.300.000 VNĐ</td>
+            <td><img src="../../images/image/ao/ao1.jpg"></td>
+            <td><a><button>Xóa</button></a></td>
+
+        </tr>
+    </table>
+    <div class="container-fluid">
+        
+        <div class="row">
+            <div class="col-lg-6 content-sua">
+                <div class="tieude">Sửa sản phẩm</div>
+                <form>
+                    <div class="row">
+                    <div class="col-lg-6">
+                        <div class="txt_form"><span>Nhập vào mã sản phẩm cần sửa:</span></div>
+                        <div class="txt_form"><span>Tên sản phẩm:</span><br></div>
+                        <div class="txt_form"><span>Thương hiệu:</span><br></div>
+                        <div class="txt_form"><span>Giá:</span><br></div>
+                        <div class="txt_form"><span>Ảnh:</span><br></div>
+                        <div class="txt_form"><span>Ảnh chi tiết:</span></div>
+                    </div>
+                <div class="col-lg-6">
+                    <div class="input_form"><input  type="text" name="masanpham"></div>
+                    
+                    <div class="input_form"><input type="text" name="tensanpham"></div>
+                    
+                    <div class="input_form"><input type="text" name="thuonghieu"></div>
+                    
+                    <div class="input_form"><input type="text" name="gia"></div>
+                    
+                    <div class="input_form"><input type="file" name="anh"></div>
+                    
+                    <div class="input_form"><input type="file" name="anh_chitiet"></div>
+
+                    <div class="input_form"><input type="submit" name="sua" value="OK"></div>
+
+                </div>
+                </div>
+                </form>
+            </div>
+            <div class="col-lg-6 content-them">
+                <div class="tieude">Thêm sản phẩm</div>
+                <form>
+                    <div class="row">
+                    <div class="col-lg-6">
+                        <div class="txt_form"><span>Mã sản phẩm:</span></div>
+                        <div class="txt_form"><span>Tên sản phẩm:</span><br></div>
+                        <div class="txt_form"><span>Thương hiệu:</span><br></div>
+                        <div class="txt_form"><span>Giá:</span><br></div>
+                        <div class="txt_form"><span>Ảnh:</span><br></div>
+                        <div class="txt_form"><span>Ảnh chi tiết:</span></div>
+                    </div>
+                <div class="col-lg-6">
+                    <div class="input_form"><input  type="text" name="masanpham"></div>
+                    
+                    <div class="input_form"><input type="text" name="tensanpham"></div>
+                    
+                    <div class="input_form"><input type="text" name="thuonghieu"></div>
+                    
+                    <div class="input_form"><input type="text" name="gia"></div>
+                    
+                    <div class="input_form"><input type="file" name="anh"></div>
+                    
+                    <div class="input_form"><input type="file" name="anh_chitiet"></div>
+
+                    <div class="input_form"><input type="submit" name="them" value="OK"></div>
+                </div>
+                </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html> 
