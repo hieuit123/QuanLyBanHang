@@ -51,7 +51,7 @@ if(isset($_GET['func_sltru']) == true){
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Giỏ hàng</title>
+<title>Cart</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Little Closet template">

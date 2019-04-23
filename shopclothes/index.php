@@ -1,18 +1,7 @@
-<?php
-        session_start();  
-        function is_Empty($string){
-            if($string == "") return true;
-            return false;
-        }
-        
-        $formdangnhap = (isset($_GET['form_dangnhap'])) ? $formdangnhap = $_GET['form_dangnhap'] : null;
-        $formdangky = (isset($_GET['form_dangky'])) ? $formdangky = $_GET['form_dangky'] : null;
-        $form = (isset($_GET['form'])) ? $form = $_GET['form'] : null;    
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>H&B Shop</title>
+<title>Little Closet</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Little Closet template">
@@ -39,7 +28,18 @@
 <script src="plugins/parallax-js-master/parallax.min.js"></script>
 <script src="js/custom.js"></script>
 </head>
-<body> 
+<body>
+    <?php
+        session_start();  
+        function is_Empty($string){
+            if($string == "") return true;
+            return false;
+        }
+        
+        $formdangnhap = (isset($_GET['form_dangnhap'])) ? $formdangnhap = $_GET['form_dangnhap'] : null;
+        $formdangky = (isset($_GET['form_dangky'])) ? $formdangky = $_GET['form_dangky'] : null;
+        $form = (isset($_GET['form'])) ? $form = $_GET['form'] : null;    
+    ?>
 
     <?php include('header.php'); ?>
 	 <div class="super_container_inner">

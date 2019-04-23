@@ -1,10 +1,7 @@
-<?php 
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Sản phẩm</title>
+<title>Product</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Little Closet template">
@@ -34,6 +31,7 @@ session_start();
 
 <!-- Menu -->
 <?php 
+session_start();
 header('Content-type: text/html; charset=utf-8');
 $kt_dachon = (isset($_SESSION['dachon'])) ? $_SESSION['dachon'] : false;
 if($kt_dachon == 'true'){

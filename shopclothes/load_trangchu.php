@@ -8,7 +8,7 @@
      $result_soluong = $conn->query($sql_soluong);
      $row_soluong = $result_soluong->fetch_assoc();
      $so_luong_int = $row_soluong['SO_LUONG'];
-	 $result = $conn->query($sql);
+	$result = $conn->query($sql);
 
 
 		include('banner.php');
@@ -51,8 +51,7 @@
                     </a>';
                         
                         }
- 					
-                    $sotrang = ceil($so_luong_int/8);
+ 					$sotrang = ceil($so_luong_int/8);
  	                   echo '</div>
                         <!--page nav-->
                             <div class="row page_nav_row_1">
@@ -60,9 +59,9 @@
                                 <div class="page_nav_1">
                                     <ul class="d-flex flex-row align-items-start justify-content-center">';
                                         for($i = 0; $i < $sotrang ; $i++){
-                                            $vitri = ($i * 8);
+                                            $vitri = ($i * 12);
                                             if($page == $vitri){
-                                                echo '<li class="active"><a>' . ($i+1) . '</a></li>';
+                                                echo '<li class="active"><a  href="index.php?pg='.$vitri.'">' . ($i+1) . '</a></li>';
                                             }
                                             else{
                                                 echo '<li><a href="index.php?pg='.$vitri.'">' . ($i+1) . '</a></li>';

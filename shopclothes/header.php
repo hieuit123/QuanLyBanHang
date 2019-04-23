@@ -1,6 +1,5 @@
 <!-- Menu -->
  <?php 
- 			
             $check_login = (isset($_SESSION['login'])) ? $_SESSION['login'] : false;
             $ho_ten = (isset($_SESSION['tendangnhap']) == 'true') ? $_SESSION['tendangnhap'] : ""; 
        ?> 

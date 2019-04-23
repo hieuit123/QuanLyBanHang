@@ -48,10 +48,7 @@ $last_id = mysqli_insert_id($conn);
         }
     }
     if( mysqli_query($conn,$sql_chitiet)){
-        echo '<script>alert("Đặt hàng thành công");window.location = "cart.php";</script>';
-        $_SESSION['giohang'] = null;
     }
-
     $conn->close();
 }
 else {
