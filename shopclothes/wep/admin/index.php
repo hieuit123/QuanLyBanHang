@@ -11,56 +11,7 @@ $ho_ten = (isset($_SESSION['tendangnhap']) == 'true') ? $_SESSION['tendangnhap']
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <title>Admin</title>
-    <style type="text/css">
-        td{
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: center;
-        }
-        th{
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: center;
-        }
-        table{
-            width: 100%;
-        }
-        td img{
-            width: 100px;
-        }
-        .tieude{
-            width: 260px;
-            margin: 40px auto;
-            font-weight: 800;
-            font-size: 30px;
-        }
-        .txt_form{
-            padding: 6.5px;
-             border: 1px solid #ddd;
-        }
-        .input_form{
-            padding: 4.5px;
-            border: 1px solid #ddd;
-        }
-        .content-them{
-             border: 1px solid black;
-
-        }
-        .content-sua{
-             border: 1px solid black;
-            
-        }
-        #phanloai{
-            padding: 4.5px;
-        }
-        ul{
-            list-style: none;
-        }
-        li{
-            padding: 10px;
-        }
-
-    </style>
+    <link rel="stylesheet" type="text/css" href="main_style.css">
 </head>
 <?php 
      include('create_connect_mysql.php');
@@ -72,6 +23,7 @@ $ho_ten = (isset($_SESSION['tendangnhap']) == 'true') ? $_SESSION['tendangnhap']
      $row_soluong = $result_soluong->fetch_assoc();
      $so_luong_int = $row_soluong['SO_LUONG'];
      $result = $conn->query($sql);
+     $conn->close();
 
      ?>
 <body>
@@ -88,8 +40,8 @@ $ho_ten = (isset($_SESSION['tendangnhap']) == 'true') ? $_SESSION['tendangnhap']
     <div>
         <ul>
             <li><a href="index.php">Quản lí sản phẩm</a></li>
-            <li><a href="quanlitaikhoan.php">Quản lí tài khoản</a></li>
-            <li><a href="quanlidonhang.php">Quản lí đơn hàng</a></li>
+            <li><a href="quanlytaikhoan.php">Quản lí tài khoản</a></li>
+            <li><a href="quanlydonhang.php">Quản lí đơn hàng</a></li>
             <li><a href="thongke.php">Thống kê</a></li>
         </ul>
     </div>
@@ -97,6 +49,7 @@ $ho_ten = (isset($_SESSION['tendangnhap']) == 'true') ? $_SESSION['tendangnhap']
     <div class="tieude">Quản lí sản phẩm</div>
     <table>
         <tr>
+            <th>STT</th>
             <th>Mã sản phẩm</th>
             <th>Tên sản phẩm</th>
             <th>Thương hiệu</th>
@@ -106,10 +59,11 @@ $ho_ten = (isset($_SESSION['tendangnhap']) == 'true') ? $_SESSION['tendangnhap']
             <th>Xóa</th>
         </tr>
         <?php
-
+            $i = 0;
             while ($row = $result->fetch_assoc()) {
 
                 echo '<tr>
+                        <td>'.++$i.'</td>
                         <td>'.$row["MA"].'</td>
                         <td>'.$row["TEN_SANPHAM"].'</td>
                         <td>'.$row["THUONGHIEU"].'</td>
@@ -131,7 +85,7 @@ $ho_ten = (isset($_SESSION['tendangnhap']) == 'true') ? $_SESSION['tendangnhap']
                                 <div class="page_nav_1">
                                     <ul class="d-flex flex-row align-items-start justify-content-center">';
                                         for($i = 0; $i < $sotrang ; $i++){
-                                            $vitri = ($i * 12);
+                                            $vitri = ($i * 8);
                                             if($page == $vitri){
                                                 echo '<li class="active"><a>' . ($i+1) . '</a></li>';
                                             }

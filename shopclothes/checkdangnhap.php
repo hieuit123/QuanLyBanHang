@@ -18,8 +18,13 @@ function thongbao(check){
     $tentaikhoan = (isset($_POST['taikhoan'])) ? $_POST['taikhoan'] : '';
     $matkhau = (isset($_POST['matkhau'])) ? $_POST['matkhau'] : '';
     $sql = "SELECT * FROM khachhang WHERE TEN_DANG_NHAP = '".$tentaikhoan."'";
+    
     $result = $conn->query($sql);
+
     $row = $result->fetch_assoc();
+    $id = $row['ID'];
+    $sql_trangthai = "UPDATE khachhang SET TRANG_THAI = 'online' WHERE ID = '".$id."'";
+    mysqli_query($conn,$sql_trangthai);
     $conn->close();
     if($tentaikhoan == 'admin' && $matkhau === $row['MAT_KHAU']) echo '<script>window.location = "wep/admin";</script>';
     if($matkhau === $row['MAT_KHAU']) {
@@ -29,7 +34,6 @@ function thongbao(check){
         $_SESSION['sdt_khachhang'] = $row['SDT'];
         
         echo '<script>thongbao("thanhcong");</script>';
-
     }
     else {
         $_SESSION['thongbao_thatbai'] = 'true';

@@ -20,13 +20,12 @@ $gia = (isset($_POST["gia"])) ? $_POST["gia"] : null;
 $so_luong = (isset($_POST["so_luong"])) ? $_POST["so_luong"] : null;
 $gia_cu = $gia  + 200000;
 include('create_connect_mysql.php');
-
+// tạo kết nối database
 $conn = create_connect();
-echo $tensanpham."-".$thuonghieu."-".$gia."-".$gia_cu;
 $sql = "INSERT INTO SANPHAM(TEN_SANPHAM,THUONGHIEU,GIA,GIA_CU,MA_LOAI,ANH,ANH_CHI_TIET,SO_LUONG) VALUES('".$tensanpham."','".$thuonghieu."','".$gia."','".$gia_cu."','".$loai."','null','null','".$so_luong."')";
-
+//Câu truy vấn sql
 if(mysqli_query($conn, $sql)){
-	$ma = mysqli_insert_id($conn);
+	$ma = mysqli_insert_id($conn);// ID tăng tự động. Lấy ra id đã thêm vào database
 
 }
 
@@ -55,5 +54,6 @@ if(($_FILES["anh"]["type"] == "image/jpeg") || ($_FILES["anh"]["type"] == "image
 
 	}
 }
+$conn->close();
 else '<script>thongbao("thatbai");</script>'
 ?>

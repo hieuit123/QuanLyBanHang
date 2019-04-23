@@ -60,7 +60,7 @@
                                 <div class="page_nav_1">
                                     <ul class="d-flex flex-row align-items-start justify-content-center">';
                                         for($i = 0; $i < $sotrang ; $i++){
-                                            $vitri = ($i * 12);
+                                            $vitri = ($i * 8);
                                             if($page == $vitri){
                                                 echo '<li class="active"><a>' . ($i+1) . '</a></li>';
                                             }

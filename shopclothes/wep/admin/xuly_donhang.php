@@ -1,7 +1,7 @@
 <script>
 	function thongbao(){
-		alert("Xóa thành công!");
-		window.location = "index.php";
+		alert("Đã xử lý!");
+		window.location = "quanlydonhang.php";
 	}
 
 </script>
@@ -9,20 +9,19 @@
 
 session_start();
 
-$masanpham = (isset($_GET["masanpham"])) ? $_GET["masanpham"] : null;
+$madonhang = (isset($_GET["madonhang"])) ? $_GET["madonhang"] : null;
 
 include('create_connect_mysql.php');
 
 $conn = create_connect();
 
-$sql = "DELETE FROM SANPHAM WHERE MA = '".$masanpham."'";
+$sql = "UPDATE DONHANG SET TRANG_THAI ='Đã xử lý' WHERE MA_DON = '".$madonhang."'";
 
 if(mysqli_query($conn, $sql)){
 	$conn->close();
 	echo '<script>thongbao();</script>';
-
 }
-else echo "LỖI"
+
 
 
 ?>

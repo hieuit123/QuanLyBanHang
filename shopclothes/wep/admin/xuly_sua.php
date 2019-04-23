@@ -26,7 +26,7 @@ $conn = create_connect();
 
 if(($_FILES["anh"]["type"] == "image/jpeg") || ($_FILES["anh"]["type"] == "image/gif") && ($_FILES["anh"]["size"] < 20000) ){
 
-	if($_FILES["anh"]["error"] > 0 && $_FILES["anh_chitiet"]["error"] > 0){
+	if($_FILES["anh"]["error"] > 0 || $_FILES["anh_chitiet"]["error"] > 0){
 		echo "Lỗi";
 	}
 	else{
@@ -47,5 +47,6 @@ if(($_FILES["anh"]["type"] == "image/jpeg") || ($_FILES["anh"]["type"] == "image
 
 	}
 }
+$conn->close();
 else '<script>thongbao("thatbai");</script>'
 ?>

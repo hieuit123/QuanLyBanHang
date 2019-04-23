@@ -1,7 +1,7 @@
 <script>
 	function thongbao(){
 		alert("Xóa thành công!");
-		window.location = "index.php";
+		window.location = "quanlytaikhoan.php";
 	}
 
 </script>
@@ -9,20 +9,18 @@
 
 session_start();
 
-$masanpham = (isset($_GET["masanpham"])) ? $_GET["masanpham"] : null;
+$makhachhang = (isset($_GET["makhachhang"])) ? $_GET["makhachhang"] : null;
 
 include('create_connect_mysql.php');
 
 $conn = create_connect();
 
-$sql = "DELETE FROM SANPHAM WHERE MA = '".$masanpham."'";
+$sql = "DELETE FROM KHACHHANG WHERE ID = '".$makhachhang."'";
 
 if(mysqli_query($conn, $sql)){
-	$conn->close();
 	echo '<script>thongbao();</script>';
-
 }
-else echo "LỖI"
+
 
 
 ?>

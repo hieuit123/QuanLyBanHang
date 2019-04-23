@@ -1,0 +1,47 @@
+td{
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th{
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        table{
+            width: 100%;
+        }
+        td img{
+            width: 100px;
+        }
+        .tieude{
+            width: 280px;
+            margin: 40px auto;
+            font-weight: 800;
+            font-size: 30px;
+        }
+        .txt_form{
+            padding: 6.5px;
+             border: 1px solid #ddd;
+        }
+        .input_form{
+            padding: 4.5px;
+            border: 1px solid #ddd;
+        }
+        .content-them{
+             border: 1px solid black;
+
+        }
+        .content-sua{
+             border: 1px solid black;
+            
+        }
+        #phanloai{
+            padding: 4.5px;
+        }
+        ul{
+            list-style: none;
+        }
+        li{
+            padding: 10px;
+        }
