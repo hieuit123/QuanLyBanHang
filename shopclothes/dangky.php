@@ -47,8 +47,10 @@
              var txt_ten= document.getElementById("hoten").value;
              temp = new RegExp("[a-zA-Z\\s]{5,25}$");
              var kt_ten = temp.test(txt_ten);
-             if(!kt_ten) alert("Họ và tên không đúng");
-             if(!kt_ten) return false;
+             if(txt_ten == ""){
+             	alert("Bạn chưa nhập họ tên");
+             	return false;
+             }
            
              var tam = "";
              tam = document.getElementById("sdt").value;
@@ -67,7 +69,7 @@
     //         
             
     //          return true;
-    return false;
+    return true;
         }
         
         function thongbao(){
@@ -109,7 +111,7 @@
 					</div>
 
 					<div class="wrap-input100 validate-input m-b-16" data-validate = "Please enter password">
-						<input class="input100" type="text" id="email" name="matkhau" placeholder="Địa chỉ Email">
+						<input class="input100" type="text" id="email" name="email" placeholder="Địa chỉ Email">
 						<span class="focus-input100"></span>
 					</div>
 

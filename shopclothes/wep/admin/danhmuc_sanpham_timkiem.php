@@ -4,10 +4,6 @@
             if($string == "") return true;
             return false;
         }
-        
-        $formdangnhap = (isset($_GET['form_dangnhap'])) ? $formdangnhap = $_GET['form_dangnhap'] : null;
-        $formdangky = (isset($_GET['form_dangky'])) ? $formdangky = $_GET['form_dangky'] : null;
-        $form = (isset($_GET['form'])) ? $form = $_GET['form'] : null;    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,35 +38,20 @@
 <body> 
 
     <?php include('header.php'); ?>
-	 <div class="super_container_inner">
-		<div class="super_overlay"></div>
-		<!-- Home -->
+     <div class="super_container_inner">
+        <div class="super_overlay"></div>
+        <!-- Home -->
 
-		<!-- Products -->
+        <!-- Products -->
         
        <?php
-
-       if($formdangnhap && $check_login != 'true') include('dangnhap.php');
-       else if($formdangky) include('dangky.php');
-       else if($form == 'sanpham')  include('loadsanpham.php'); 
-       else include('load_trangchu.php');
+       include('loadsanpham.php'); 
        ?>
         
             
     </div>
 
-				<!--page nav-->
-                                        <!--  End page nav                  -->
-			
-
-		<!-- Boxes -->
-
-
-		<!-- Features -->
-
-		<!-- Footer -->
-
-		<?php
+        <?php
         
         include('feature.php');
         include('footer.php'); ?>
