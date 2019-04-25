@@ -2,7 +2,8 @@
  <?php 
  			
             $check_login = (isset($_SESSION['login'])) ? $_SESSION['login'] : false;
-            $ho_ten = (isset($_SESSION['tendangnhap']) == 'true') ? $_SESSION['tendangnhap'] : ""; 
+            $ho_ten = (isset($_SESSION['tendangnhap']) == 'true') ? $_SESSION['tendangnhap'] : "";
+            $makhachhang = (isset($_SESSION['ma_khach_hang'])) ? $_SESSION['ma_khach_hang'] : "";  
        ?> 
 <div class="menu">
 
@@ -33,7 +34,7 @@
 			<div>+1 912-252-7350</div>
 		</div>
 -->
-		<div class="menu_social">
+			<div class="menu_social">
 			<ul class="menu_social_list d-flex flex-row align-items-start justify-content-start">
 				<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
 				<li><a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
@@ -87,6 +88,7 @@
                     <?php 
                     	if($check_login=='true') {
                     		echo '<div class="dropdown-menu">
+                    					<div class="dropdown-item"><a href="thongtinkhachhang.php?makhachhang='.$makhachhang.'">Thông tin cá nhân</a></div>
 		                        		<div class="dropdown-item"><a href="index.php?form_dangnhap=true">Đơn hàng của tôi</a></div>
 		                        		<div class="dropdown-item"><a href="dangxuat.php">Đăng xuất</a></div>
 		                    		</div>';

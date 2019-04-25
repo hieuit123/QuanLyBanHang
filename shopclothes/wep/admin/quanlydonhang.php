@@ -60,7 +60,7 @@ $ho_ten = (isset($_SESSION['tendangnhap']) == 'true') ? $_SESSION['tendangnhap']
         </ul>
     </div>
     <div>Xin chào <?php echo $ho_ten; ?> <a href="dangxuat.php">Thoát</a></div>
-    <div class="tieude">Quản lí khách hàng</div>
+    <div class="tieude">Quản lí đơn hàng</div>
     <table>
         <tr>
             <th>STT</th>

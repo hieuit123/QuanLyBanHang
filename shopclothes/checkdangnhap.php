@@ -37,7 +37,7 @@ function thongbao(check){
             $_SESSION['tendangnhap'] = $row['HO_TEN'];
             $_SESSION['ma_khach_hang'] = $row['ID'];
             $_SESSION['sdt_khachhang'] = $row['SDT'];
-            
+            $_SESSION['dia_chi'] = $row['DIA_CHI'];
             echo '<script>thongbao("thanhcong");</script>';
         }
         else {

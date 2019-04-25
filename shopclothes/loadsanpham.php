@@ -1,11 +1,12 @@
 
             <?php
-                
+                session_start();
                 include('create_connect_mysql.php');
                 $conn = create_connect();
                 $page = (isset($_GET['pg']) == true) ? $_GET['pg'] : 0; // Đánh dấu số trang
                 $muc = "";// Loại sản phẩm
                 $dulieu_timkiem =  (isset($_GET["dl_timkiem"])) ? $_GET["dl_timkiem"] : null; // Lấy dữ liệu tìm kiếm
+
                 $sql = "SELECT * FROM sanpham  LIMIT ".$page." , 8"; // Câu truy vấn sql
                 $sql_soluong = "SELECT COUNT(MA) as SO_LUONG FROM sanpham"; 
                     if(isset($_GET['muc']) == true && is_Empty($_GET['muc']) == false) {
@@ -14,19 +15,20 @@
                     $sql_soluong = "SELECT COUNT(MA) as SO_LUONG FROM sanpham WHERE MA_LOAI ='".$_GET['muc']."'";
                   }
                   else if($dulieu_timkiem != null) {
+                    $_SESSION['dulieu_timkiem'] = $dulieu_timkiem;
                     $sql = "SELECT * FROM sanpham WHERE TEN_SANPHAM LIKE'%".$dulieu_timkiem."%' LIMIT ".$page." , 8";
                     $sql_soluong = "SELECT COUNT(MA) as SO_LUONG FROM sanpham WHERE TEN_SANPHAM LIKE'%".$dulieu_timkiem."%'";
                     echo '<div style="width:350px; margin:0px auto;margin-top:120px;font-size:17px;"><span>Từ khóa "'.$dulieu_timkiem.'" có kết quả tìm kiếm là : </span></div><br>';
                   }
                   else if(isset($_GET['phanloai']) == true){
-
+                    $dulieu_timkiem = (isset($_SESSION['dulieu_timkiem'])) ? $_SESSION['dulieu_timkiem'] : "";
                     if(isset($_GET['toithieu']) == true && is_Empty($_GET['toithieu']) == false) $toithieu = $_GET['toithieu'];
                     else $toithieu = 0;
 
                     if(isset($_GET['toida']) == true && is_Empty($_GET['toida']) == false) $toida = $_GET['toida'];
                     else $toida = 999999999;
                     
-                    $sql = "SELECT * FROM sanpham WHERE MA_LOAI ='".$_GET['phanloai']."' AND ( GIA > ".$toithieu." AND GIA < ".$toida.") LIMIT ".$page." , 8";
+                    $sql = "SELECT * FROM sanpham WHERE MA_LOAI ='".$_GET['phanloai']."' AND ( GIA > ".$toithieu." AND GIA < ".$toida.") AND TEN_SANPHAM LIKE '%".$dulieu_timkiem."%' LIMIT ".$page." , 8";
         
                     $sql_soluong = "SELECT COUNT(MA) as SO_LUONG FROM sanpham WHERE MA_LOAI ='".$_GET['phanloai']."' AND ( GIA > ".$toithieu." AND GIA < ".$toida.")";
                   }
@@ -100,6 +102,7 @@
                 else {
                     echo '<div style="padding-top:100px"><span style = "color:rgb(0, 155, 107);font-size:20px;width:300px;">< Không có kết quả phù hợp> </span></div>';
                 }
+                echo $sql;
                 $conn->close();
                 ?> 
                 

@@ -3,6 +3,7 @@
     session_start();
     $kt_xoatatca = (isset($_GET['xoatatca'])) ? $_GET['xoatatca'] : false;
     if($kt_xoatatca) $_SESSION['giohang'] = null;
+    $diachi = (isset($_SESSION['dia_chi']) == 'true') ? $_SESSION['dia_chi'] : "Chưa có";
     class SanPham{
     public $ma;
     public $ten;
@@ -184,9 +185,18 @@ if(isset($_GET['func_sltru']) == true){
 										<div class="cart_extra_total_value ml-auto">Miễn phí</div>
 									</li>
 									<li class="d-flex flex-row align-items-center justify-content-start">
+										<div class="cart_extra_total_title">Địa chỉ giao hàng</div>
+										<div class="cart_extra_total_value ml-auto"><a href="cart.php?form=thaydoidiachi">Thay đổi</a></div>	
+									</li>
+									<li class="d-flex flex-row align-items-center justify-content-start">
+										<div class="cart_extra_total_title">Địa chỉ: <?php echo $diachi; ?></div>	
+									</li>
+									<li class="d-flex flex-row align-items-center justify-content-start">
 										<div class="cart_extra_total_title">Tổng tiền</div>
 										<div class="cart_extra_total_value ml-auto"><?php echo str_replace(",",".",number_format($tong_tien)); ?> VNĐ</div>
+
 									</li>
+									
 								</ul>
 								<div class="checkout_button trans_200"><a href="xuly_muahang.php">Mua hàng</a></div>
 							</div>
