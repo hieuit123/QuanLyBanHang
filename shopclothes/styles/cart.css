@@ -911,12 +911,15 @@ section
 }
 .product_price
 {
+
 	font-size: 16px !important;
 }
 .product_total
 {
+	width: 120px;
 	font-size: 16px !important;
 	font-weight: 500 !important;
+	text-align: right;
 }
 .product_text
 {

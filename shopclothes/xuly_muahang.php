@@ -22,7 +22,11 @@ if(isset($_SESSION['giohang']) == true){
     
     $array_giohang = json_decode($_SESSION['giohang']);
 }
-else $array_giohang = array();
+else {
+    
+    header('location: cart.php');
+
+}
 // Đơn hàng : Mã đơn tự động, mã khách hàng, thời gian đặt hàng,ma chi tiet don hang, trang thai(cho xac nhan, da xac nhan)
 
 //chi tiet don hang : ma chi tiết don hang, ma san pham,so luong

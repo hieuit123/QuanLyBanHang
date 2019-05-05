@@ -72,9 +72,36 @@ if(isset($_GET['func_sltru']) == true){
 <script src="plugins/easing/easing.js"></script>
 <script src="plugins/parallax-js-master/parallax.min.js"></script>
 <script src="js/cart.js"></script>
+<style>
+	.input-diachi{
+		float:left;
+		width:730px;
+		text-align:center;
+		height: 35px;
+		}
+		.btn-ok{
+			
+			padding: 2px;
+			float: right;
+			margin-left: 5px;
+		}
+</style>
 </head>
 <body>
-
+<script>
+	function hienthi_diachi(){
+		document.getElementById("ip-diachi").innerHTML = '<div class="cart_extra_total_title">Địa chỉ: </div>'+
+											'<div class="cart_extra_total_value ml-auto">'+
+											'<form method="get" action="xuly_doidiachi.php?">'+
+											'<input class="input-diachi" name="diachi" type="text" placeholder="Nhập vào địa chỉ mới"/>'+
+											'<input class="btn-ok" type="submit" value="OK"/>'+
+											'<div style="clear: both;"></div>'+
+										'</form>'+
+									'</div>';
+	 
+	}
+	
+</script>
 	<?php include('header.php'); ?>
 		<div class="super_overlay"></div>
 
@@ -186,10 +213,12 @@ if(isset($_GET['func_sltru']) == true){
 									</li>
 									<li class="d-flex flex-row align-items-center justify-content-start">
 										<div class="cart_extra_total_title">Địa chỉ giao hàng</div>
-										<div class="cart_extra_total_value ml-auto"><a href="cart.php?form=thaydoidiachi">Thay đổi</a></div>	
+										<div class="cart_extra_total_value ml-auto"><button onclick="hienthi_diachi();">Thay đổi</button></div>	
 									</li>
-									<li class="d-flex flex-row align-items-center justify-content-start">
-										<div class="cart_extra_total_title">Địa chỉ: <?php echo $diachi; ?></div>	
+									<li class="d-flex flex-row align-items-center justify-content-start" id="ip-diachi">
+										
+											<div class="cart_extra_total_title">Địa chỉ: <?php echo $diachi; ?></div>
+											
 									</li>
 									<li class="d-flex flex-row align-items-center justify-content-start">
 										<div class="cart_extra_total_title">Tổng tiền</div>

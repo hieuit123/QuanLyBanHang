@@ -1,15 +1,13 @@
-
             <?php
-                session_start();
+                session_start();          
                 include('create_connect_mysql.php');
                 $conn = create_connect();
                 $page = (isset($_GET['pg']) == true) ? $_GET['pg'] : 0; // Đánh dấu số trang
                 $muc = "";// Loại sản phẩm
                 $dulieu_timkiem =  (isset($_GET["dl_timkiem"])) ? $_GET["dl_timkiem"] : null; // Lấy dữ liệu tìm kiếm
-
                 $sql = "SELECT * FROM sanpham  LIMIT ".$page." , 8"; // Câu truy vấn sql
                 $sql_soluong = "SELECT COUNT(MA) as SO_LUONG FROM sanpham"; 
-                    if(isset($_GET['muc']) == true && is_Empty($_GET['muc']) == false) {
+                    if(isset($_GET['muc']) == true) {
                     $muc = $_GET['muc'];
                     $sql = "SELECT * FROM sanpham WHERE MA_LOAI ='".$_GET['muc']."' LIMIT ".$page." , 8";
                     $sql_soluong = "SELECT COUNT(MA) as SO_LUONG FROM sanpham WHERE MA_LOAI ='".$_GET['muc']."'";
@@ -22,15 +20,16 @@
                   }
                   else if(isset($_GET['phanloai']) == true){
                     $dulieu_timkiem = (isset($_SESSION['dulieu_timkiem'])) ? $_SESSION['dulieu_timkiem'] : "";
-                    if(isset($_GET['toithieu']) == true && is_Empty($_GET['toithieu']) == false) $toithieu = $_GET['toithieu'];
+                    if($_GET['toithieu'] != "" ) $toithieu = $_GET['toithieu'];
                     else $toithieu = 0;
 
-                    if(isset($_GET['toida']) == true && is_Empty($_GET['toida']) == false) $toida = $_GET['toida'];
+                    if($_GET['toida'] != "" ) $toida = $_GET['toida'];
                     else $toida = 999999999;
                     
                     $sql = "SELECT * FROM sanpham WHERE MA_LOAI ='".$_GET['phanloai']."' AND ( GIA > ".$toithieu." AND GIA < ".$toida.") AND TEN_SANPHAM LIKE '%".$dulieu_timkiem."%' LIMIT ".$page." , 8";
         
                     $sql_soluong = "SELECT COUNT(MA) as SO_LUONG FROM sanpham WHERE MA_LOAI ='".$_GET['phanloai']."' AND ( GIA > ".$toithieu." AND GIA < ".$toida.")";
+                    $_SESSION['dulieu_timkiem'] = "";
                   }
                 $result = $conn->query($sql);
                  $result_soluong = $conn->query($sql_soluong);// thực hiện câu truy vấn  Lấy dữ liệu trên server bỏ vào biến này
@@ -102,7 +101,6 @@
                 else {
                     echo '<div style="padding-top:100px"><span style = "color:rgb(0, 155, 107);font-size:20px;width:300px;">< Không có kết quả phù hợp> </span></div>';
                 }
-                echo $sql;
                 $conn->close();
                 ?> 
                 

@@ -1,6 +1,5 @@
 <?php
-        session_start();
-          
+        session_start();         
         $ho_ten = (isset($_SESSION['tendangnhap']) == 'true') ? $_SESSION['tendangnhap'] : "";
         $sdt = (isset($_SESSION['sdt_khachhang']) == 'true') ? $_SESSION['sdt_khachhang'] : "";
         $diachi = (isset($_SESSION['dia_chi']) == 'true') ? $_SESSION['dia_chi'] : "Chưa có";
@@ -36,9 +35,17 @@
     .title-muc{
         margin-left: 240px;
         font-size: 21px;
+        margin-bottom: 10px;
+
     }
-    .link-chinhsua{
+    .btn-chinhsua{
         font-size: 21px;
+        margin-left: 240px;
+    }
+    .btn-ok{
+        width: 34px;
+        height: 33.5px;
+        padding-top: 6px; 
         margin-left: 240px;
     }
 
@@ -58,7 +65,16 @@
 <script src="js/custom.js"></script>
 </head>
 <body> 
-
+    <script>
+    function hienthi_diachi(){
+        document.getElementById("content-diachi").innerHTML = '<form method="get" action="xuly_doidiachi.php?">'+
+                                            '<input class="title-muc" name="diachi" type="text" placeholder="Nhập vào địa chỉ mới"/><br>'+
+                                            '<input class="btn-ok" type="submit" value="OK"/>'+
+                                        '</form>';
+     
+    }
+    
+    </script>
     <?php include('header.php'); ?>
      <div class="super_container_inner">
         <div class="super_overlay"></div>
@@ -70,8 +86,10 @@
         <div class="content-thongtincanhan">
             <div class="title-muc">Tên: <span><?php echo $ho_ten; ?></span></div>
             <div class="title-muc">Số điện thoại: <span><?php echo $sdt; ?></span></div>
+            <div id="content-diachi">
             <div class="title-muc">Địa chỉ giao hàng: <span><?php echo $diachi; ?></span></div>  
-            <a class="link-chinhsua" href="chinhsuathongtin.php?">Chỉnh sửa</a>
+            <button class="btn-chinhsua" onclick="hienthi_diachi();">Chỉnh sửa</button>
+            </div>
         </div>
     </div>
 

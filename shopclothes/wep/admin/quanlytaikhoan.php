@@ -61,7 +61,7 @@ $ho_ten = (isset($_SESSION['tendangnhap']) == 'true') ? $_SESSION['tendangnhap']
     <div class="tieude">Quản lí khách hàng</div>
     <table>
         <tr>f
-            <th>STT</th>
+            <th><a href="#">STT</a></th>
             <th><a href=<?php echo '"quanlytaikhoan.php?muc_sapxep=ID&loai='.$link_loai.'"'; ?>>Mã khách hàng <i class="fas fa-sort"></i></a> </th>
             <th><a href=<?php echo '"quanlytaikhoan.php?muc_sapxep=TEN_DANG_NHAP&loai='.$link_loai.'"'; ?>>Tên đăng nhập <i class="fas fa-sort"></i></a></th>
             <th><a href=<?php echo '"quanlytaikhoan.php?muc_sapxep=HO_TEN&loai='.$link_loai.'"'; ?>>Tên khách hàng <i class="fas fa-sort"></i></a></th>

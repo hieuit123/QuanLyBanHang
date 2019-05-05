@@ -63,14 +63,14 @@ $ho_ten = (isset($_SESSION['tendangnhap']) == 'true') ? $_SESSION['tendangnhap']
     <div class="tieude">Quản lí đơn hàng</div>
     <table>
         <tr>
-            <th>STT</th>
+            <th><a href=#>STT</a></th>
             <th><a href=<?php echo '"quanlydonhang.php?muc_sapxep=MA_DON&loai='.$link_loai.'"'; ?>>Mã đơn <i class="fas fa-sort"></i></a></th>
             <th><a href=<?php echo '"quanlydonhang.php?muc_sapxep=MA_KHACH_HANG&loai='.$link_loai.'"'; ?>>Mã khách hàng <i class="fas fa-sort"></i></a></th>
             <th><a href=<?php echo '"quanlydonhang.php?muc_sapxep=THOI_GIAN&loai='.$link_loai.'"'; ?>>Thời gian đặt <i class="fas fa-sort"></i></a></th>
             <th><a href=<?php echo '"quanlydonhang.php?muc_sapxep=TONG_SO_LUONG&loai='.$link_loai.'"'; ?>>Số lượng <i class="fas fa-sort"></i></a></th>
             <th><a href=<?php echo '"quanlydonhang.php?muc_sapxep=TONG_TIEN&loai='.$link_loai.'"'; ?>>Tổng tiền <i class="fas fa-sort"></i></a></th>
             <th><a href=<?php echo '"quanlydonhang.php?muc_sapxep=TRANG_THAI&loai='.$link_loai.'"'; ?>>Trạng thái <i class="fas fa-sort"></i></a></th>
-            <th>Xử lý</th>
+            <th><a href=#>Xử lý</a></th>
         </tr>
         <?php
             $i = 0;

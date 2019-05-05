@@ -783,6 +783,7 @@ section
 .product
 {
 	overflow: hidden;
+	border: solid 1px #dbdbdb;
 	border-radius: 3px;
 }
 .product:hover{
@@ -831,7 +832,7 @@ section
 }
 .product_content
 {
-	border: solid 1px #dbdbdb;
+	border-top: solid 1px #dbdbdb;
 }
 .home_item_large .product_content
 {

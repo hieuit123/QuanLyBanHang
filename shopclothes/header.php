@@ -89,7 +89,7 @@
                     	if($check_login=='true') {
                     		echo '<div class="dropdown-menu">
                     					<div class="dropdown-item"><a href="thongtinkhachhang.php?makhachhang='.$makhachhang.'">Thông tin cá nhân</a></div>
-		                        		<div class="dropdown-item"><a href="index.php?form_dangnhap=true">Đơn hàng của tôi</a></div>
+		                        		<div class="dropdown-item"><a href="donhang.php">Đơn hàng của tôi</a></div>
 		                        		<div class="dropdown-item"><a href="dangxuat.php">Đăng xuất</a></div>
 		                    		</div>';
                     	}

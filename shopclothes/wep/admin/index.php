@@ -62,14 +62,14 @@ $ho_ten = (isset($_SESSION['tendangnhap']) == 'true') ? $_SESSION['tendangnhap']
     <div class="tieude">Quản lí sản phẩm</div>
     <table>
         <tr>
-            <th>STT</th>
+            <th><a href="#">STT</a></th>
             <th><a href=<?php echo '"index.php?muc_sapxep=MA&loai='.$link_loai.'"'; ?>>Mã sản phẩm <i class="fas fa-sort"></i></a></th>
             <th><a href=<?php echo '"index.php?muc_sapxep=TEN_SANPHAM&loai='.$link_loai.'"'; ?>>Tên sản phẩm <i class="fas fa-sort"></i></a></th>
             <th><a href=<?php echo '"index.php?muc_sapxep=THUONGHIEU&loai='.$link_loai.'"'; ?>>Thương Hiệu <i class="fas fa-sort"></i></a></th>
             <th><a href=<?php echo '"index.php?muc_sapxep=GIA&loai='.$link_loai.'"'; ?>>Giá <i class="fas fa-sort"></i></a></th>
             <th><a href=<?php echo '"index.php?muc_sapxep=SO_LUONG&loai='.$link_loai.'"'; ?>>Số lượng <i class="fas fa-sort"></i></a></th>
-            <th>Ảnh</th>
-            <th>Xóa</th>
+            <th><a href="#">Ảnh</a></th>
+            <th><a href="#">Xử lý</a></th>
         </tr>
         <?php
             $i = 0;
@@ -83,7 +83,9 @@ $ho_ten = (isset($_SESSION['tendangnhap']) == 'true') ? $_SESSION['tendangnhap']
                         <td>'.str_replace(",",".",number_format($row["GIA"])).' VNĐ</td>
                         <td>'.$row["SO_LUONG"].'</td>
                         <td><img src="../../images/'.$row["ANH"].'"></td>
-                        <td><button onclick="xacnhan(\'xuly_xoa.php?masanpham='.$row['MA'].'\')">Xóa</button></td>
+                        <td><button onclick="xacnhan(\'xuly_xoa.php?masanpham='.$row['MA'].'\')">Xóa</button>
+                        <button onclick="xacnhan(\'sua_sanpham.php?masanpham='.$row['MA'].'\')">Sửa</button>
+                        </td>
                     </tr>';
             }
 
@@ -117,53 +119,7 @@ $ho_ten = (isset($_SESSION['tendangnhap']) == 'true') ? $_SESSION['tendangnhap']
     <div class="container-fluid">
         
         <div class="row">
-            <div class="col-lg-6 content-sua">
-                <div class="tieude">Sửa sản phẩm</div>
-                <form action="xuly_sua.php" method="post" enctype="multipart/form-data">
-                    <div class="row">
-                    <div class="col-lg-6">
-                        <div class="txt_form"><span>Nhập vào mã sản phẩm cần sửa:</span></div>
-                        <div class="txt_form"><span>Tên sản phẩm:</span><br></div>
-                        <div class="txt_form"><span>Thương hiệu:</span><br></div>
-                        <div class="txt_form"><span>Loại sản phẩm:</span><br></div>
-                        <div class="txt_form"><span>Giá:</span><br></div>
-                        <div class="txt_form"><span>Số lượng:</span></div>
-                        <div class="txt_form"><span>Ảnh:</span><br></div>
-                        <div class="txt_form"><span>Ảnh chi tiết:</span></div>
-                    </div>
-                <div class="col-lg-6">
-                    <div class="input_form"><input  type="text" name="masanpham"></div>
-                    
-                    <div class="input_form"><input type="text" name="tensanpham"></div>
-                    
-                    <div class="input_form"><input type="text" name="thuonghieu"></div>
-                    
-                    <select id="phanloai" name="phanloai">
-                        <option value="" selected>[Lựa chọn]</option>
-                        <option value="ao">Áo</option>
-                        <option value="quan">Quần</option>
-                        <option value="non">Nón</option>
-                        <option value="giay">Giày</option>
-                        <option value="aokhoac">Áo khoác</option>
-                        <option value="daynit">Dây nịt</option>
-                        <option value="dongho">Đồng hồ</option>
-                    </select>
-                    
-
-                    <div class="input_form"><input type="text" name="gia"></div>
-                    
-                    <div class="input_form"><input type="text" name="so_luong"></div>
-
-                    <div class="input_form"><input type="file" name="anh"></div>
-                    
-                    <div class="input_form"><input type="file" name="anh_chitiet"></div>
-
-                    <div class="input_form"><input type="submit" name="sua" value="OK"></div>
-
-                </div>
-                </div>
-                </form>
-            </div>
+            <div class="col-lg-3"></div>
             <div class="col-lg-6 content-them">
                 <div class="tieude">Thêm sản phẩm</div>
                 <form action="xuly_them.php" method="post" enctype="multipart/form-data">

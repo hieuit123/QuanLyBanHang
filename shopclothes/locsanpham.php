@@ -1,6 +1,6 @@
 
 <div style="float:right; padding-top:112px;"  id="loc">
-                <form >
+                <form method="get" action="danhmuc_sanpham_timkiem.php">
                     <label>Loại:</label>
                     <select id="phanloai" name="phanloai">
                         <option value="" selected>[Lựa chọn]</option>
