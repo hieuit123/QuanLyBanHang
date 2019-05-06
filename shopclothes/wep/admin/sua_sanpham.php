@@ -15,6 +15,50 @@ $_SESSION["ma_sua"] = $ma;
     <link rel="stylesheet" type="text/css" href="main_style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/solid.css" integrity="sha384-QokYePQSOwpBDuhlHOsX0ymF6R/vLk/UQVz3WHa6wygxI5oGTmDTv8wahFOSspdm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/fontawesome.css" integrity="sha384-vd1e11sR28tEK9YANUtpIOdjGW14pS87bUBuOIoBILVWLFnS+MCX9T6MMf0VdPGq" crossorigin="anonymous">
+    <style type="text/css">
+        div.menu_qldh{
+            font-size: 20px;
+            width: 100%;
+            height: 50px;
+            top: 0;
+            background: linear-gradient(to left, #9fb8ad, #1fc8db, #2cb5e8);
+        }
+        div.menu_qldh>a{
+            float: left;
+            list-style: none;
+            width: 180px;
+            text-align: center;
+            height: 50px;
+            line-height: 50px;
+            background: none;
+            border: 0;
+            text-decoration: none;
+            color: #4e5156;
+        }
+
+        div.menu_qldh>a:hover{
+            box-sizing: border-box;
+            background: white;
+        }
+        div.tieude{
+            border: 3px solid black;
+            border-radius: 10px;
+            width: 300px;
+            height: 70px;
+            line-height: 60px;
+            text-align: center;
+            font-size: 30px;
+        }
+        div.tieude{
+            border: 3px solid black;
+            border-radius: 10px;
+            width: 300px;
+            height: 70px;
+            line-height: 60px;
+            text-align: center;
+            font-size: 30px;
+        }
+    </style>
 </head>
 <?php 
      include('create_connect_mysql.php');
@@ -36,15 +80,13 @@ $_SESSION["ma_sua"] = $ma;
         document.getElementById(<?php echo '"'.$sanpham["MA_LOAI"].'"'; ?>).selected = true;
     }
     </script>
-    <div>
-        <ul>
-            <li><a href="index.php">Quản lí sản phẩm</a></li>
-            <li><a href="quanlytaikhoan.php">Quản lí tài khoản</a></li>
-            <li><a href="quanlydonhang.php">Quản lí đơn hàng</a></li>
-            <li><a href="thongke.php">Thống kê</a></li>
-        </ul>
+    <div class="menu_qldh">
+        <a href="index.php">Quản lí sản phẩm</a>
+        <a href="quanlytaikhoan.php">Quản lí tài khoản</a>
+        <a href="quanlydonhang.php">Quản lí đơn hàng</a>
+        <a href="thongke.php">Thống kê</a>
+        <div style="text-align: right;">Xin chào <?php echo $ho_ten; ?> <a style="text-decoration: none; line-height: 45px;" href="dangxuat.php">&emsp;Đăng xuất</a></div>
     </div>
-    <div>Xin chào <?php echo $ho_ten; ?> <a href="dangxuat.php">Thoát</a></div>
     <div class="tieude">Sửa sản phẩm</div>
     
     <div class="container-fluid">

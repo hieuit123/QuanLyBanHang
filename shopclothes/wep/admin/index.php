@@ -14,6 +14,78 @@ $ho_ten = (isset($_SESSION['tendangnhap']) == 'true') ? $_SESSION['tendangnhap']
     <link rel="stylesheet" type="text/css" href="main_style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/solid.css" integrity="sha384-QokYePQSOwpBDuhlHOsX0ymF6R/vLk/UQVz3WHa6wygxI5oGTmDTv8wahFOSspdm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/fontawesome.css" integrity="sha384-vd1e11sR28tEK9YANUtpIOdjGW14pS87bUBuOIoBILVWLFnS+MCX9T6MMf0VdPGq" crossorigin="anonymous">
+    <style type="text/css">
+        div.menu_admin{
+            font-size: 20px;
+            width: 100%;
+            height: 50px;
+            top: 0;
+            background: linear-gradient(to left, #9fb8ad, #1fc8db, #2cb5e8);
+        }
+        div.menu_admin>a{
+            float: left;
+            list-style: none;
+            width: 180px;
+            text-align: center;
+            height: 50px;
+            line-height: 50px;
+            background: none;
+            border: 0;
+            text-decoration: none;
+            color: #4e5156;
+        }
+
+        div.menu_admin>a:hover{
+            box-sizing: border-box;
+            background: white;
+        }
+        .btn-xoa, .btn-sua{
+            border-radius: 10px;
+            width: 70px;
+            height: 40px;
+            background: #b8c1d1;
+            border: 0;
+        }
+        .btn-xoa:hover{
+            background: #ed5e68;
+            cursor: pointer;
+        }
+        .btn-sua:hover{
+            background: #2092ec;
+            cursor: pointer;
+        }
+        div.tieude{
+            border: 3px solid black;
+            border-radius: 10px;
+            width: 300px;
+            height: 70px;
+            line-height: 60px;
+            text-align: center;
+            font-size: 30px;
+        }
+        a#so-trang, a.active{
+            margin: 10px 0;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            align-items: center;
+            line-height: 40px;
+        }
+
+        a#so-trang:hover{
+            background: #6CDC02;
+            border-radius: 20px 20px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        a.active:hover{
+            background: red;
+            border-radius: 20px 20px;  
+            cursor: not-allowed; 
+        }
+
+    </style>
 </head>
 <?php 
      include('create_connect_mysql.php');
@@ -43,22 +115,22 @@ $ho_ten = (isset($_SESSION['tendangnhap']) == 'true') ? $_SESSION['tendangnhap']
     <script type="text/javascript">
         function xacnhan(url){
 
-            if(confirm("Xác nhận xóa sản phẩm")){
+            if(confirm("Xác nhận sửa sản phẩm")){
                 window.location  = url;
             }
 
 
         }
     </script>
-    <div>
-        <ul>
-            <li><a href="index.php">Quản lí sản phẩm</a></li>
-            <li><a href="quanlytaikhoan.php">Quản lí tài khoản</a></li>
-            <li><a href="quanlydonhang.php">Quản lí đơn hàng</a></li>
-            <li><a href="thongke.php">Thống kê</a></li>
-        </ul>
+    <div class="menu_admin">
+        <a href="index.php">Quản lí sản phẩm</a>
+        <a href="quanlytaikhoan.php">Quản lí tài khoản</a>
+        <a href="quanlydonhang.php">Quản lí đơn hàng</a>
+        <a href="thongke.php">Thống kê</a>
+        <div style="text-align: right;">Xin chào <?php echo $ho_ten; ?> !
+            <a style="text-decoration: none; line-height: 45px;" href="dangxuat.php">&emsp;Đăng xuất</a>
+        </div>
     </div>
-    <div>Xin chào <?php echo $ho_ten; ?> <a href="dangxuat.php">Thoát</a></div>
     <div class="tieude">Quản lí sản phẩm</div>
     <table>
         <tr>
@@ -74,7 +146,6 @@ $ho_ten = (isset($_SESSION['tendangnhap']) == 'true') ? $_SESSION['tendangnhap']
         <?php
             $i = 0;
             while ($row = $result->fetch_assoc()) {
-
                 echo '<tr>
                         <td>'.++$i.'</td>
                         <td>'.$row["MA"].'</td>
@@ -83,12 +154,11 @@ $ho_ten = (isset($_SESSION['tendangnhap']) == 'true') ? $_SESSION['tendangnhap']
                         <td>'.str_replace(",",".",number_format($row["GIA"])).' VNĐ</td>
                         <td>'.$row["SO_LUONG"].'</td>
                         <td><img src="../../images/'.$row["ANH"].'"></td>
-                        <td><button onclick="xacnhan(\'xuly_xoa.php?masanpham='.$row['MA'].'\')">Xóa</button>
-                        <button onclick="xacnhan(\'sua_sanpham.php?masanpham='.$row['MA'].'\')">Sửa</button>
+                        <td><button class="btn-xoa" onclick="xacnhan(\'xuly_xoa.php?masanpham='.$row['MA'].'\')">Xóa</button><br><br>
+                            <button class="btn-sua" onclick="xacnhan(\'sua_sanpham.php?masanpham='.$row['MA'].'\')">Sửa</button>
                         </td>
                     </tr>';
             }
-
         ?>
     </table>
     <?php
@@ -102,10 +172,10 @@ $ho_ten = (isset($_SESSION['tendangnhap']) == 'true') ? $_SESSION['tendangnhap']
                                         for($i = 0; $i < $sotrang ; $i++){
                                             $vitri = ($i * 8);
                                             if($page == $vitri){
-                                                echo '<li class="active"><a>' . ($i+1) . '</a></li>';
+                                                echo '<a class="active">'.($i+1).'</a>';
                                             }
                                             else{
-                                                echo '<li><a href="index.php?pg='.$vitri.'">' . ($i+1) . '</a></li>';
+                                                echo '<a id="so-trang" href="index.php?pg='.$vitri.'">'.($i+1). '</a></li>';
                                             }
                                         }
                                     echo '</ul>
@@ -115,7 +185,7 @@ $ho_ten = (isset($_SESSION['tendangnhap']) == 'true') ? $_SESSION['tendangnhap']
                             <!--  End page nav -->
                          </div>
                     </div>';
-                    ?>
+    ?>
     <div class="container-fluid">
         
         <div class="row">

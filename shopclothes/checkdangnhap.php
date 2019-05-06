@@ -28,6 +28,12 @@ function thongbao(check){
     $conn->close();
     
     if($row["QUYEN"] == 0) {
+            $_SESSION["login"]='true';
+            $_SESSION["quyen"] = $row['QUYEN'];
+            $_SESSION['tendangnhap'] = $row['HO_TEN'];
+            $_SESSION['ma_khach_hang'] = $row['ID'];
+            $_SESSION['sdt_khachhang'] = $row['SDT'];
+            $_SESSION['dia_chi'] = $row['DIA_CHI'];
         echo '<script>window.location = "wep/admin";</script>';
     }
     else{

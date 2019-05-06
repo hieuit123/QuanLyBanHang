@@ -84,10 +84,10 @@
                                         for($i = 0; $i < $sotrang ; $i++){
                                             $vitri = ($i * 8);
                                             if($page == $vitri){
-                                                echo '<li class="active"><a  href="index.php?muc='.$muc.'&pg='.$vitri.'">' . ($i+1) . '</a></li>';
+                                                echo '<li class="active"><a  href="index.php?form=sanpham&muc='.$muc.'&pg='.$vitri.'">' . ($i+1) . '</a></li>';
                                             }
                                             else{
-                                                echo '<li><a href="index.php?muc='.$muc.'&pg='.$vitri.'">' . ($i+1) . '</a></li>';
+                                                echo '<li><a href="index.php?form=sanpham&muc='.$muc.'&pg='.$vitri.'">' . ($i+1) . '</a></li>';
                                             }
                                         }
                                     echo '</ul>
