@@ -1,5 +1,8 @@
 <?php 
 session_start();
+if($_SESSION["login"] != "true" || $_SESSION["quyen"] != 0){
+    header('location: ../../index.php?formdangnhap=true');
+}
 $ho_ten = (isset($_SESSION['tendangnhap']) == 'true') ? $_SESSION['tendangnhap'] : "";
 ?>
 

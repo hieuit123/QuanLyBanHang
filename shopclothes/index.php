@@ -42,39 +42,59 @@
 <body> 
 
     <?php include('header.php'); ?>
-	 <div class="super_container_inner">
-		<div class="super_overlay"></div>
-		<!-- Home -->
+   <div class="super_container_inner" id="ok3conde">
+    <div class="super_overlay"></div>
+    <!-- Home -->
 
-		<!-- Products -->
+    <!-- Products -->
         
        <?php
 
        if($formdangnhap && $check_login != 'true') include('dangnhap.php');
        else if($formdangky) include('dangky.php');
        else if($form == 'sanpham')  include('loadsanpham.php'); 
-       else include('load_trangchu.php');
+       else {
+    include('load_trangchu.php');
+     } 
        ?>
         
             
     </div>
 
-				<!--page nav-->
+        <!--page nav-->
                                         <!--  End page nav                  -->
-			
+      
 
-		<!-- Boxes -->
+    <!-- Boxes -->
 
 
-		<!-- Features -->
+    <!-- Features -->
 
-		<!-- Footer -->
+    <!-- Footer -->
 
-		<?php
+    <?php
         
         include('feature.php');
         include('footer.php'); ?>
 
-
+<script>
+  function laySPTimKiem(e){
+    const search = $('input[name="dl_timkiem"]').val()
+    $.get("loadsanpham.php", { dl_timkiem: search }, function(data){
+      $("#ok3conde").html(data);
+    });
+    return false;
+  }
+  
+  function locSPTimKiem(e){
+    const phanloai = $('#phanloai').val()
+    const toithieu = $('input#toithieu').val()
+    const toida = $('input#toida').val()
+    $.get("loadsanpham.php", { phanloai: phanloai, toithieu : toithieu, toida : toida   }, function(data){
+      $("#ok3conde").html(data);
+    });
+    return false;
+  }
+</script>
 </body>
 </html>

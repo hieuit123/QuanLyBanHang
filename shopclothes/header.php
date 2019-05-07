@@ -8,12 +8,7 @@
 <div class="menu">
 
 	<!-- Search -->
-	<div class="menu_search">
-		<form action="danhmuc_sanpham_timkiem.php" id="menu_search_form" method="get" class="menu_search_form">
-			<input type="text" class="search_input" name="dl_timkiem" placeholder="Tìm kiếm sản phẩm" required="required">
-			<button class="menu_search_button"><img src="images/search.png" alt=""></button>
-		</form>
-	</div>
+	
 	<!-- Navigation -->
 	<div class="menu_nav">
 		<ul>
@@ -76,7 +71,7 @@
 			<div class="header_right d-flex flex-row align-items-center justify-content-start ml-auto">
 				<!-- Search -->
 				<div class="header_search">
-					<form action="danhmuc_sanpham_timkiem.php" id="header_search_form" method="get">
+					<form action="#" method="get" onSubmit="return laySPTimKiem(this)" id="header_search_form">
 						<input type="text" class="search_input" placeholder="Tìm kiếm sản phẩm" name="dl_timkiem" required="required">
 						<button class="header_search_button"><img src="images/search.png" alt=""></button>
 					</form>

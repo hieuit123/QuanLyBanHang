@@ -1,6 +1,6 @@
 
 <div style="float:right; padding-top:112px;"  id="loc">
-                <form method="get" action="danhmuc_sanpham_timkiem.php">
+                <form action="#" method="get" onSubmit="return locSPTimKiem(this)">
                     <label>Loại:</label>
                     <select id="phanloai" name="phanloai">
                         <option value="" selected>[Lựa chọn]</option>

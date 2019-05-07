@@ -1,5 +1,4 @@
             <?php
-                session_start();          
                 include('create_connect_mysql.php');
                 $conn = create_connect();
                 $page = (isset($_GET['pg']) == true) ? $_GET['pg'] : 0; // Đánh dấu số trang
@@ -7,10 +6,10 @@
                 $dulieu_timkiem =  (isset($_GET["dl_timkiem"])) ? $_GET["dl_timkiem"] : null; // Lấy dữ liệu tìm kiếm
                 $sql = "SELECT * FROM sanpham  LIMIT ".$page." , 8"; // Câu truy vấn sql
                 $sql_soluong = "SELECT COUNT(MA) as SO_LUONG FROM sanpham"; 
-                    if(isset($_GET['muc']) == true) {
-                    $muc = $_GET['muc'];
-                    $sql = "SELECT * FROM sanpham WHERE MA_LOAI ='".$_GET['muc']."' LIMIT ".$page." , 8";
-                    $sql_soluong = "SELECT COUNT(MA) as SO_LUONG FROM sanpham WHERE MA_LOAI ='".$_GET['muc']."'";
+                    if(isset($_GET['phanloai']) == true){
+                    $muc = $_GET['phanloai'];
+                    $sql = "SELECT * FROM sanpham WHERE MA_LOAI ='".$_GET['phanloai']."' LIMIT ".$page." , 8";
+                    $sql_soluong = "SELECT COUNT(MA) as SO_LUONG FROM sanpham WHERE MA_LOAI ='".$_GET['phanloai']."'";
                   }
                   else if($dulieu_timkiem != null) {
                     $_SESSION['dulieu_timkiem'] = $dulieu_timkiem;
@@ -38,39 +37,39 @@
                   
                 $dem = 0;
                         echo  '<div class="products">
-			             <div class="container">';
+                         <div class="container">';
                     
                 if ($result->num_rows > 0) {
 //                    <div class="row">
-//					       <div class="col-lg-6 offset-lg-3">
-//						  <div class="section_title text-center">Sản phẩm được thiết kế bởi H&B</div>
-//					       </div>
-//				            </div>
+//                         <div class="col-lg-6 offset-lg-3">
+//                        <div class="section_title text-center">Sản phẩm được thiết kế bởi H&B</div>
+//                         </div>
+//                          </div>
                     // output data of each row
                     include('locsanpham.php');
-				    echo '<div class="row products_row">';
+                    echo '<div class="row products_row">';
                     
                     while($row = $result->fetch_assoc()) {
                         echo '<a href="product.php?idsanpham='.$row['MA'].'">
-					<div class="col-xl-3 col-md-4">
-						<div class="product">
-							<div class="product_image"><img src="images/'.$row['ANH'].'" alt=""></div>
-							<div class="product_content">
-								<div class="info_sanpham">
-									<div>
-										<div>
-											<div class="product_name"><a href="product.php?idsanpham='.$row['MA'].'"><div class="label">'.$row['TEN_SANPHAM'].'</div></a></div>
-											<div class="thuonghieu"><a href="#">'.$row['THUONGHIEU'].'</a></div>
-										</div>
-									</div>
-									   <div class="gia">
-										<div class="product_price text-right"><span>'.str_replace(",",".",number_format($row['GIA'])).'</span>VND</div>
-								        </div>
+                    <div class="col-xl-3 col-md-4">
+                        <div class="product">
+                            <div class="product_image"><img src="images/'.$row['ANH'].'" alt=""></div>
+                            <div class="product_content">
+                                <div class="info_sanpham">
+                                    <div>
+                                        <div>
+                                            <div class="product_name"><a href="product.php?idsanpham='.$row['MA'].'"><div class="label">'.$row['TEN_SANPHAM'].'</div></a></div>
+                                            <div class="thuonghieu"><a href="#">'.$row['THUONGHIEU'].'</a></div>
+                                        </div>
+                                    </div>
+                                       <div class="gia">
+                                        <div class="product_price text-right"><span>'.str_replace(",",".",number_format($row['GIA'])).'</span>VND</div>
+                                        </div>
                                 </div>
-								
-							</div>
-						</div>
-					</div>
+                                
+                            </div>
+                        </div>
+                    </div>
                     </a>';
                         
                         }
@@ -84,10 +83,10 @@
                                         for($i = 0; $i < $sotrang ; $i++){
                                             $vitri = ($i * 8);
                                             if($page == $vitri){
-                                                echo '<li class="active"><a  href="index.php?form=sanpham&muc='.$muc.'&pg='.$vitri.'">' . ($i+1) . '</a></li>';
+                                                echo '<li class="active"><a  href="index.php?form=sanpham&phanloai='.$muc.'&pg='.$vitri.'">' . ($i+1) . '</a></li>';
                                             }
                                             else{
-                                                echo '<li><a href="index.php?form=sanpham&muc='.$muc.'&pg='.$vitri.'">' . ($i+1) . '</a></li>';
+                                                echo '<li><a href="index.php?form=sanpham&phanloai='.$muc.'&pg='.$vitri.'">' . ($i+1) . '</a></li>';
                                             }
                                         }
                                     echo '</ul>
@@ -105,4 +104,3 @@
                 ?> 
                 
 
-            
