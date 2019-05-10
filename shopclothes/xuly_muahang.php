@@ -1,4 +1,3 @@
-
 <?php 
 session_start();
 $check_login = (isset($_SESSION['login'])) ? $_SESSION['login'] : 'false';

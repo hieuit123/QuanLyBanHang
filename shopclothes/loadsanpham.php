@@ -1,36 +1,48 @@
-            <?php
+<?php
+                session_start();
                 include('create_connect_mysql.php');
                 $conn = create_connect();
                 $page = (isset($_GET['pg']) == true) ? $_GET['pg'] : 0; // Đánh dấu số trang
+                $timkiem = (isset($_GET['pg']) == 'false') ? 'false' : 'true';
+                if($timkiem == "false") $_SESSION['dulieu_timkiem'] = "";
+                $toida=999999999;
+                $toithieu=0;
                 $muc = "";// Loại sản phẩm
-                $dulieu_timkiem =  (isset($_GET["dl_timkiem"])) ? $_GET["dl_timkiem"] : null; // Lấy dữ liệu tìm kiếm
+                // start lấy dữ liệu tìm kiếm
+                if(isset($_GET["dl_timkiem"])){
+                    $dulieu_timkiem = $_GET["dl_timkiem"];    
+                }
+                else{ 
+                    $dulieu_timkiem =  $_SESSION["dulieu_timkiem"];
+                }
+                //end lấy dữ liệu tìm kiểm
+                //start lấy dữ liệu toàn bộ sản phẩm
                 $sql = "SELECT * FROM sanpham  LIMIT ".$page." , 8"; // Câu truy vấn sql
-                $sql_soluong = "SELECT COUNT(MA) as SO_LUONG FROM sanpham"; 
-                    if(isset($_GET['phanloai']) == true){
+                $sql_soluong = "SELECT COUNT(MA) as SO_LUONG FROM sanpham";
+                //end 
+                    //start lấy dữ liệu tìm kiếm nâng cao 
+
+                    if(isset($_GET['phanloai'])== true && $_GET["phanloai"] != "" ){
+                    $_SESSION["dulieu_timkiem"] = "";
                     $muc = $_GET['phanloai'];
                     $sql = "SELECT * FROM sanpham WHERE MA_LOAI ='".$_GET['phanloai']."' LIMIT ".$page." , 8";
                     $sql_soluong = "SELECT COUNT(MA) as SO_LUONG FROM sanpham WHERE MA_LOAI ='".$_GET['phanloai']."'";
-                  }
-                  else if($dulieu_timkiem != null) {
+                    if(isset($_GET['toida'])){
+                    if($_GET['toithieu'] != "" ) $toithieu = $_GET['toithieu'];
+                    if($_GET['toida'] != "" ) $toida = $_GET['toida'];
+                    
+                    $sql = "SELECT * FROM sanpham WHERE MA_LOAI ='".$muc."' AND ( GIA >= ".$toithieu." AND GIA <= ".$toida.")  AND TEN_SANPHAM LIKE '%".$dulieu_timkiem."%' LIMIT ".$page." , 8";
+        
+                    $sql_soluong = "SELECT COUNT(MA) as SO_LUONG FROM sanpham WHERE MA_LOAI ='".$muc."' AND ( GIA >= ".$toithieu." AND GIA <= ".$toida.")  AND TEN_SANPHAM LIKE '%".$dulieu_timkiem."%'";
+                    }
+                  }// End nâng cao
+                  else if($dulieu_timkiem != null){ // Nếu có dữ liệu tìm kiếm thì tìm
                     $_SESSION['dulieu_timkiem'] = $dulieu_timkiem;
                     $sql = "SELECT * FROM sanpham WHERE TEN_SANPHAM LIKE'%".$dulieu_timkiem."%' LIMIT ".$page." , 8";
                     $sql_soluong = "SELECT COUNT(MA) as SO_LUONG FROM sanpham WHERE TEN_SANPHAM LIKE'%".$dulieu_timkiem."%'";
                     echo '<div style="width:350px; margin:0px auto;margin-top:120px;font-size:17px;"><span>Từ khóa "'.$dulieu_timkiem.'" có kết quả tìm kiếm là : </span></div><br>';
-                  }
-                  else if(isset($_GET['phanloai']) == true){
-                    $dulieu_timkiem = (isset($_SESSION['dulieu_timkiem'])) ? $_SESSION['dulieu_timkiem'] : "";
-                    if($_GET['toithieu'] != "" ) $toithieu = $_GET['toithieu'];
-                    else $toithieu = 0;
-
-                    if($_GET['toida'] != "" ) $toida = $_GET['toida'];
-                    else $toida = 999999999;
-                    
-                    $sql = "SELECT * FROM sanpham WHERE MA_LOAI ='".$_GET['phanloai']."' AND ( GIA > ".$toithieu." AND GIA < ".$toida.") AND TEN_SANPHAM LIKE '%".$dulieu_timkiem."%' LIMIT ".$page." , 8";
-        
-                    $sql_soluong = "SELECT COUNT(MA) as SO_LUONG FROM sanpham WHERE MA_LOAI ='".$_GET['phanloai']."' AND ( GIA > ".$toithieu." AND GIA < ".$toida.")";
-                    $_SESSION['dulieu_timkiem'] = "";
-                  }
-                $result = $conn->query($sql);
+                  }// end tìm kiếm bình thường
+                 $result = $conn->query($sql);
                  $result_soluong = $conn->query($sql_soluong);// thực hiện câu truy vấn  Lấy dữ liệu trên server bỏ vào biến này
                  $row_soluong = $result_soluong -> fetch_assoc();//  lấy dữ liệu của các dòng
                  $so_luong_int = $row_soluong['SO_LUONG'];// So lượng sản phẩm (tổng tất cả)
@@ -49,7 +61,7 @@
                     include('locsanpham.php');
                     echo '<div class="row products_row">';
                     
-                    while($row = $result->fetch_assoc()) {
+                    while($row = $result->fetch_assoc()){
                         echo '<a href="product.php?idsanpham='.$row['MA'].'">
                     <div class="col-xl-3 col-md-4">
                         <div class="product">
@@ -74,22 +86,33 @@
                         
                         }
                      $sotrang = ceil($so_luong_int/8);
-                    echo '</div>
+                     if($page/8 > 2){
+                     $trangbatdau = ($page/8)-2;
+                     }
+                     else{
+                        $trangbatdau = 0;
+                        $trangketthuc = $trangbatdau + 5;
+                     }
+                     if($sotrang < 6){
+                        $trangbatdau =0;
+                        $trangketthuc = $sotrang;
+                     }
+                       echo '</div>
                         <!--page nav-->
                             <div class="row page_nav_row_1">
                             <div class="col">
                                 <div class="page_nav_1">
-                                    <ul class="d-flex flex-row align-items-start justify-content-center">';
-                                        for($i = 0; $i < $sotrang ; $i++){
+                                    <ul class="d-flex flex-row align-items-start justify-content-center"><li><a href="index.php?form=sanpham&phanloai='.$muc.'&pg='.($page -8).'&toithieu='.$toithieu.'&toida='.$toida.'"><-</a></li>';
+                                        for($i = $trangbatdau; $i < $trangketthuc ; $i++){
                                             $vitri = ($i * 8);
                                             if($page == $vitri){
-                                                echo '<li class="active"><a  href="index.php?form=sanpham&phanloai='.$muc.'&pg='.$vitri.'">' . ($i+1) . '</a></li>';
+                                                echo '<li class="active"><a  href="index.php?form=sanpham&phanloai='.$muc.'&pg='.$vitri.'&toithieu='.$toithieu.'&toida='.$toida.'">' . ($i+1) .'</a></li>';
                                             }
                                             else{
-                                                echo '<li><a href="index.php?form=sanpham&phanloai='.$muc.'&pg='.$vitri.'">' . ($i+1) . '</a></li>';
+                                                echo '<li><a href="index.php?form=sanpham&dl_timkiem='.$dulieu_timkiem.'&phanloai='.$muc.'&pg='.$vitri.'&toithieu='.$toithieu.'&toida='.$toida.'">'.($i+1).'</a></li>';
                                             }
                                         }
-                                    echo '</ul>
+                                    echo '<li><a href="index.php?form=sanpham&phanloai='.$muc.'&pg='.($page + 8).'&toithieu='.$toithieu.'&toida='.$toida.'">-></a></li></ul>
                                 </div>
                             </div>
                         </div>
@@ -101,6 +124,4 @@
                     echo '<div style="padding-top:100px"><span style = "color:rgb(0, 155, 107);font-size:20px;width:300px;">< Không có kết quả phù hợp> </span></div>';
                 }
                 $conn->close();
-                ?> 
-                
-
+                ?>

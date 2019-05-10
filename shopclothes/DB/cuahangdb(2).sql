@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 07, 2019 lúc 04:54 PM
+-- Thời gian đã tạo: Th5 08, 2019 lúc 06:06 AM
 -- Phiên bản máy phục vụ: 10.1.37-MariaDB
 -- Phiên bản PHP: 7.3.0
 
@@ -103,7 +103,7 @@ CREATE TABLE `khachhang` (
 --
 
 INSERT INTO `khachhang` (`ID`, `TEN_DANG_NHAP`, `MAT_KHAU`, `HO_TEN`, `SDT`, `TRANG_THAI`, `DIA_CHI`) VALUES
-(1, 'tranminhhieu', 'hieu123', 'Trần Minh Hiếu', '0328729739', 'online', 'Phú Yên'),
+(1, 'tranminhhieu', 'hieu123', 'Trần Minh Hiếu', '0328729739', 'offline', 'Phú Yên'),
 (2, 'tranquocbao', 'bao123', 'Trần Quốc Bảo', '0328729739', 'online', 'TP.HCM'),
 (3, 'nguyendinhsang', 'sang123', 'Nguyễn Đình Sang', '0328729739', 'offline', 'Phú Yên'),
 (5, 'admin', 'admin', 'Trần Minh Hiếu', '0328729739', 'offline', 'Phú Yên'),

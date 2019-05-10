@@ -12,13 +12,13 @@
 	<!-- Navigation -->
 	<div class="menu_nav">
 		<ul>
-					<li><a href="index.php?muc=ao&pg=0&form=sanpham">Áo</a></li>
-                    <li><a href="index.php?muc=quan&pg=0&form=sanpham">Quần</a></li>
-                    <li><a href="index.php?muc=non&pg=0&form=sanpham">Nón</a></li>
-                    <li><a href="index.php?muc=dongho&pg=0&form=sanpham">Đồng hồ</a></li>
-                    <li><a href="index.php?muc=giay&pg=0&form=sanpham">Giày</a></li>
-                    <li><a href="index.php?muc=daynit&pg=0&form=sanpham">Dây nịt</a></li>
-                    <li><a href="index.php?muc=aokhoac&pg=0&form=sanpham">Áo khoác</a></li>
+					<li><a href="index.php?phanloai=ao&pg=0&form=sanpham&timkiem=false">Áo</a></li>
+                    <li><a href="index.php?phanloai=quan&pg=0&form=sanpham&timkiem=false">Quần</a></li>
+                    <li><a href="index.php?phanloai=non&pg=0&form=sanpham&timkiem=false">Nón</a></li>
+                    <li><a href="index.php?phanloai=dongho&pg=0&form=sanpham&timkiem=false">Đồng hồ</a></li>
+                    <li><a href="index.php?phanloai=giay&pg=0&form=sanpham&timkiem=false&timkiem=false">Giày</a></li>
+                    <li><a href="index.php?phanloai=daynit&pg=0&form=sanpham&timkiem=false">Dây nịt</a></li>
+                    <li><a href="index.php?phanloai	=aokhoac&pg=0&form=sanpham&timkiem=false">Áo khoác</a></li>
 		</ul>
 	</div>
 	<!-- Contact Info -->
@@ -59,20 +59,20 @@
 			</div>
             <nav class="main_nav">
 				<ul class="d-flex flex-row align-items-start justify-content-start">
-					<li class="active"><li><a href="index.php?muc=ao&pg=0&form=sanpham">Áo</a></li>
-                    <li><a href="index.php?muc=quan&pg=0&form=sanpham">Quần</a></li>
-                    <li><a href="index.php?muc=non&pg=0&form=sanpham">Nón</a></li>
-                    <li><a href="index.php?muc=dongho&pg=0&form=sanpham">Đồng hồ</a></li>
-                    <li><a href="index.php?muc=giay&pg=0&form=sanpham">Giày</a></li>
-                    <li><a href="index.php?muc=daynit&pg=0&form=sanpham">Dây nịt</a></li>
-                    <li><a href="index.php?muc=aokhoac&pg=0&form=sanpham">Áo khoác</a></li>
+					<li class="active"><li><a href="index.php?phanloai=ao&pg=0&form=sanpham&timkiem=false">Áo</a></li>
+                    <li><a href="index.php?phanloai=quan&pg=0&form=sanpham&timkiem=false">Quần</a></li>
+                    <li><a href="index.php?phanloai=non&pg=0&form=sanpham&timkiem=false">Nón</a></li>
+                    <li><a href="index.php?phanloai=dongho&pg=0&form=sanpham&timkiem=false">Đồng hồ</a></li>
+                    <li><a href="index.php?phanloai=giay&pg=0&form=sanpham&timkiem=false">Giày</a></li>
+                    <li><a href="index.php?phanloai=daynit&pg=0&form=sanpham&timkiem=false">Dây nịt</a></li>
+                    <li><a href="index.php?phanloai=aokhoac&pg=0&form=sanpham&timkiem=false">Áo khoác</a></li>
 				</ul>
 			</nav>
 			<div class="header_right d-flex flex-row align-items-center justify-content-start ml-auto">
 				<!-- Search -->
 				<div class="header_search">
 					<form action="#" method="get" onSubmit="return laySPTimKiem(this)" id="header_search_form">
-						<input type="text" class="search_input" placeholder="Tìm kiếm sản phẩm" name="dl_timkiem" required="required">
+						<input type="text" class="search_input" placeholder="Tìm kiếm sản phẩm" id="dl_timkiem" name="dl_timkiem" required="required">
 						<button class="header_search_button"><img src="images/search.png" alt=""></button>
 					</form>
 				</div>

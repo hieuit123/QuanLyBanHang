@@ -1,25 +1,24 @@
 <script type="text/javascript">
-    
-    function thongbao(check){
-        if (check=='tontai') {
+    function thongbao(check) {
+        if (check == 'tontai') {
             alert("Tên đăng nhập đã tồn tại!");
-             window.location = "index.php?form_dangky=true";
-             return "";
+            window.location = "index.php?form_dangky=true";
+            return "";
         }
 
-        if(check=='thanhcong') {
+        if (check == 'thanhcong') {
             alert("Đăng ký thành công");
             window.location = "index.php?form_dangnhap=true";
-        }
-        else{
+        } else {
             alert("Đăng ký thất bại");
             window.location = "index.php?form_dangky=true";
         }
 
     }
+
 </script>
 
-    <?php 
+<?php 
     // Lấy dữ liệu 
         $tendangnhap = (isset($_POST['tendangnhap'])) ? $_POST['tendangnhap'] : "";
         $matkhau = (isset($_POST['matkhau'])) ? $_POST['matkhau'] : "";

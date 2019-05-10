@@ -79,6 +79,13 @@
 
 <script>
   function laySPTimKiem(e){
+    var dl_timkiem = document.getElementById("dl_timkiem").value;
+    temp = new RegExp("[\\w\\s]{1,}$");
+    kt_timkiem = temp.test(dl_timkiem);
+    if(!kt_timkiem){
+      alert("Dữ liệu tìm kiếm không hợp lệ !");
+      return false;
+    }
     const search = $('input[name="dl_timkiem"]').val()
     $.get("loadsanpham.php", { dl_timkiem: search }, function(data){
       $("#ok3conde").html(data);
@@ -87,6 +94,7 @@
   }
   
   function locSPTimKiem(e){
+    
     const phanloai = $('#phanloai').val()
     const toithieu = $('input#toithieu').val()
     const toida = $('input#toida').val()

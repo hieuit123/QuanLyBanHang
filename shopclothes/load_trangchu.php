@@ -10,11 +10,12 @@
      $so_luong_int = $row_soluong['SO_LUONG'];
 	 $result = $conn->query($sql);
 
-
+        if(isset($_GET['pg']) == false){
 		include('banner.php');
+        }
 	        echo  '<div class="products">
 			             <div class="container">
-			             <div style=" width:230px;margin:30px auto;font-size:30px;color:#FFC756;"><b><u>Tất cả sản phẩm</u></b></div>
+			             <div style=" width:230px;margin:100px auto;font-size:30px;color:#FFC756;"><b><u>Tất cả sản phẩm</u></b></div>
 
 			             ';
                     
@@ -53,13 +54,22 @@
                         }
  					
                     $sotrang = ceil($so_luong_int/8);
+                     if($page/8 > 2){
+                     $trangbatdau = ($page/8)-2;
+                     }
+                     else{
+                        $trangbatdau = 0;
+                     }
  	                   echo '</div>
                         <!--page nav-->
                             <div class="row page_nav_row_1">
+
                             <div class="col">
                                 <div class="page_nav_1">
-                                    <ul class="d-flex flex-row align-items-start justify-content-center">';
-                                        for($i = 0; $i < $sotrang ; $i++){
+
+                                    <ul class="d-flex flex-row align-items-start justify-content-center"><li><a href="index.php?pg='.($page-8).'"><-</a></li>';
+
+                                        for($i = $trangbatdau; $i < ($trangbatdau+5) ; $i++){
                                             $vitri = ($i * 8);
                                             if($page == $vitri){
                                                 echo '<li class="active"><a>' . ($i+1) . '</a></li>';
@@ -68,7 +78,7 @@
                                                 echo '<li><a href="index.php?pg='.$vitri.'">' . ($i+1) . '</a></li>';
                                             }
                                         }
-                                    echo '</ul>
+                                    echo '<li><a href="index.php?pg='.($page+8).'">-></a></li></ul>
                                 </div>
                             </div>
                         </div>
