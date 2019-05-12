@@ -6,6 +6,9 @@
 		if(danhdau == "thatbai"){
 			alert("Thêm thất bại!");
 		}
+		if(danhdau == "trung"){
+			alert("Tên sản phẩm bị trùng!");
+		}
 		window.location = "index.php";
 	}
 
@@ -21,7 +24,13 @@ $so_luong = (isset($_POST["so_luong"])) ? $_POST["so_luong"] : null;
 $gia_cu = $gia  + 200000;
 include('create_connect_mysql.php');
 // tạo kết nối database
+$sql_kiemtra = "SELECT * FROM sanpham WHERE TEN_SANPHAM = '".$tensanpham."'";
+
 $conn = create_connect();
+$result_kiemtra = mysqli_query($conn,$sql_kiemtra);
+if(mysqli_num_rows($result_kiemtra) > 0){
+	echo "<script>thongbao('trung');</script>";
+}else{
 $sql = "INSERT INTO SANPHAM(TEN_SANPHAM,THUONGHIEU,GIA,GIA_CU,MA_LOAI,ANH,ANH_CHI_TIET,SO_LUONG) VALUES('".$tensanpham."','".$thuonghieu."','".$gia."','".$gia_cu."','".$loai."','null','null','".$so_luong."')";
 //Câu truy vấn sql
 if(mysqli_query($conn, $sql)){
@@ -56,4 +65,5 @@ if(($_FILES["anh"]["type"] == "image/jpeg") || ($_FILES["anh"]["type"] == "image
   }
 }
 else echo '<script>thongbao("thatbai");</script>';
+}
 ?>

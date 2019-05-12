@@ -1,7 +1,7 @@
 <?php
                 session_start();
-                include('create_connect_mysql.php');
-                $conn = create_connect();
+                include('connect.php');
+                $conn = create_connect_mysql();
                 $page = (isset($_GET['pg']) == true) ? $_GET['pg'] : 0; // Đánh dấu số trang
                 $timkiem = (isset($_GET['pg']) == 'false') ? 'false' : 'true';
                 if($timkiem == "false") $_SESSION['dulieu_timkiem'] = "";
@@ -30,7 +30,8 @@
                     if(isset($_GET['toida'])){
                     if($_GET['toithieu'] != "" ) $toithieu = $_GET['toithieu'];
                     if($_GET['toida'] != "" ) $toida = $_GET['toida'];
-                    
+                    //if(($toithieu) $toithieu = 999999999;
+                    //if(is_string($toida+1)) $toida = 999999999;
                     $sql = "SELECT * FROM sanpham WHERE MA_LOAI ='".$muc."' AND ( GIA >= ".$toithieu." AND GIA <= ".$toida.")  AND TEN_SANPHAM LIKE '%".$dulieu_timkiem."%' LIMIT ".$page." , 8";
         
                     $sql_soluong = "SELECT COUNT(MA) as SO_LUONG FROM sanpham WHERE MA_LOAI ='".$muc."' AND ( GIA >= ".$toithieu." AND GIA <= ".$toida.")  AND TEN_SANPHAM LIKE '%".$dulieu_timkiem."%'";
@@ -42,16 +43,20 @@
                     $sql_soluong = "SELECT COUNT(MA) as SO_LUONG FROM sanpham WHERE TEN_SANPHAM LIKE'%".$dulieu_timkiem."%'";
                     echo '<div style="width:350px; margin:0px auto;margin-top:120px;font-size:17px;"><span>Từ khóa "'.$dulieu_timkiem.'" có kết quả tìm kiếm là : </span></div><br>';
                   }// end tìm kiếm bình thường
-                 $result = $conn->query($sql);
+                 
+                 if($result = $conn->query($sql)){
                  $result_soluong = $conn->query($sql_soluong);// thực hiện câu truy vấn  Lấy dữ liệu trên server bỏ vào biến này
                  $row_soluong = $result_soluong -> fetch_assoc();//  lấy dữ liệu của các dòng
                  $so_luong_int = $row_soluong['SO_LUONG'];// So lượng sản phẩm (tổng tất cả)
-                  
+                  }
+                  else {
+                    $so_luong_int =0;
+                  }
                 $dem = 0;
                         echo  '<div class="products">
                          <div class="container">';
                     
-                if ($result->num_rows > 0) {
+                if ($so_luong_int > 0) {
 //                    <div class="row">
 //                         <div class="col-lg-6 offset-lg-3">
 //                        <div class="section_title text-center">Sản phẩm được thiết kế bởi H&B</div>
@@ -88,6 +93,7 @@
                      $sotrang = ceil($so_luong_int/8);
                      if($page/8 > 2){
                      $trangbatdau = ($page/8)-2;
+                     $trangketthuc = $trangbatdau + 5;
                      }
                      else{
                         $trangbatdau = 0;
@@ -102,7 +108,8 @@
                             <div class="row page_nav_row_1">
                             <div class="col">
                                 <div class="page_nav_1">
-                                    <ul class="d-flex flex-row align-items-start justify-content-center"><li><a href="index.php?form=sanpham&phanloai='.$muc.'&pg='.($page -8).'&toithieu='.$toithieu.'&toida='.$toida.'"><-</a></li>';
+                                    <ul class="d-flex flex-row align-items-start justify-content-center">';
+                                    if($page != 0 ) echo '<li><a href="index.php?form=sanpham&phanloai='.$muc.'&pg='.($page -8).'&toithieu='.$toithieu.'&toida='.$toida.'"><-</a></li>';
                                         for($i = $trangbatdau; $i < $trangketthuc ; $i++){
                                             $vitri = ($i * 8);
                                             if($page == $vitri){
@@ -112,7 +119,8 @@
                                                 echo '<li><a href="index.php?form=sanpham&dl_timkiem='.$dulieu_timkiem.'&phanloai='.$muc.'&pg='.$vitri.'&toithieu='.$toithieu.'&toida='.$toida.'">'.($i+1).'</a></li>';
                                             }
                                         }
-                                    echo '<li><a href="index.php?form=sanpham&phanloai='.$muc.'&pg='.($page + 8).'&toithieu='.$toithieu.'&toida='.$toida.'">-></a></li></ul>
+                                    if($page/8 != $sotrang -1)echo '<li><a href="index.php?form=sanpham&phanloai='.$muc.'&pg='.($page + 8).'&toithieu='.$toithieu.'&toida='.$toida.'">-></a></li>';
+                                    echo '</ul>
                                 </div>
                             </div>
                         </div>

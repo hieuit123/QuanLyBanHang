@@ -1,5 +1,15 @@
 <?php 
 session_start();
+/////
+include('create_connect_mysql.php');
+$conn = create_connect();
+$sql = "SELECT * FROM khachhang WHERE ID = ".$_SESSION['ma_khach_hang'];
+$result = $conn->query($sql);
+$row = $result->fetch_assoc();
+if($row['KHOA'] == "1") {
+	echo '<script>alert("Tài khoản của bạn đã bị khóa!");window.location = "dangxuat.php";</script>';
+}
+/////
 $check_login = (isset($_SESSION['login'])) ? $_SESSION['login'] : 'false';
 $ma_khach_hang = (isset($_SESSION['ma_khach_hang'])) ? $_SESSION['ma_khach_hang'] : '';
  class SanPham{
@@ -30,8 +40,6 @@ else {
 
 //chi tiet don hang : ma chi tiết don hang, ma san pham,so luong
 if($check_login == 'true'){
-include('create_connect_mysql.php');
-$conn = create_connect();
 $thoi_gian = date('Y-m-d');
 $sql = "INSERT INTO donhang (MA_KHACH_HANG, THOI_GIAN, TRANG_THAI) VALUES ('".$ma_khach_hang."','".$thoi_gian."', 'Đang xử lí');";
 $sql_chitiet = "INSERT INTO chitietdonhang (MA_DON, MA_SAN_PHAM, SO_LUONG, TONG_TIEN) VALUES";

@@ -18,7 +18,7 @@ $row_tongsoluong = $result_tongsoluong->fetch_assoc();
 
 
 // start loai san pham ban chay nhat
-$sql_loaisanpham = "SELECT  lsp.MA_LOAI,lsp.TEN_LOAI ,SUM(ct.SO_LUONG) SL FROM chitietdonhang ct JOIN sanpham sp ON ct.MA_SAN_PHAM = sp.MA JOIN loaisanpham lsp ON sp.MA_LOAI = lsp.MA_LOAI  GROUP BY sp.MA_LOAI ORDER BY `SL` DESC ";
+$sql_loaisanpham = "SELECT  lsp.MA_LOAI,lsp.TEN_LOAI ,SUM(ct.SO_LUONG) SL FROM chitietdonhang ct JOIN sanpham sp ON ct.MA_SAN_PHAM = sp.MA RIGHT JOIN loaisanpham lsp ON sp.MA_LOAI = lsp.MA_LOAI  GROUP BY sp.MA_LOAI ORDER BY `SL` DESC ";
 $result_loaisanpham = mysqli_query($conn, $sql_loaisanpham);
 $row_loaisanpham = $result_loaisanpham->fetch_assoc();
 $loaibanchay = $row_loaisanpham["TEN_LOAI"];
@@ -31,9 +31,13 @@ $array_phantram = array();
 		array_push($array_loai, $row_loaisanpham["SL"]);	
 		$tongsoluong = $sl_loaibanchay;
 		while ($row_loaisanpham = $result_loaisanpham->fetch_assoc()) {
+			$soluong_loai_temp = $row_loaisanpham['SL'];
+			if($soluong_loai_temp == ""){
+				$soluong_loai_temp = 0;
+			} 
 			array_push($array_loai, $row_loaisanpham["TEN_LOAI"]);
-			array_push($array_loai, $row_loaisanpham["SL"]);
-			$tongsoluong += $row_loaisanpham["SL"];
+			array_push($array_loai, $soluong_loai_temp);
+			$tongsoluong += $soluong_loai_temp;
 		}
 
 		for($i = 0 ; $i < count($array_loai) ; $i += 2){
@@ -178,9 +182,11 @@ mysqli_close($conn);
 	<script type="text/javascript" src="Chart.min.js"></script>
 	<div class="menu_tk">
         <a href="index.php">Quản lí sản phẩm</a>
+        <a href="quanlyloai.php">Quản lí loại</a>
         <a href="quanlytaikhoan.php">Quản lí tài khoản</a>
         <a href="quanlydonhang.php">Quản lí đơn hàng</a>
         <a href="thongke.php">Thống kê</a>
+        <a href="suathongtin.php">Sửa thông tin</a>
         <div style="text-align: right;">Xin chào <?php echo $ho_ten; ?> <a style="text-decoration: none; line-height: 45px;" href="dangxuat.php">&emsp;Đăng xuất</a></div>
     </div>
     <div class="tieude">Thống kê</div>
@@ -229,8 +235,6 @@ mysqli_close($conn);
 		?>
 		</table>
     </div>
-
-	
 	<!-- pie chart canvas element -->
         <div class="content-bieudo">
        	<div style="width: 500px; margin-left: 60px;"><b>Tỉ lệ các loại sản phẩm bán ra: (Đơn vị %)</b></div>
@@ -275,6 +279,5 @@ mysqli_close($conn);
 	new Chart(countries).Pie(pieData, pieOptions);
 
 	</script>
-	<?php echo $_SESSION["tendangnhap"]; ?>
 </body>
 </html>

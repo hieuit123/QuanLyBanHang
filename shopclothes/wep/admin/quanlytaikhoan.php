@@ -1,4 +1,4 @@
-<?php 
+    <?php 
 session_start();
 if($_SESSION["login"] != "true" || $_SESSION["quyen"] != 0){
     header('location: ../../index.php?formdangnhap=true');
@@ -127,17 +127,46 @@ $ho_ten = (isset($_SESSION['tendangnhap']) == 'true') ? $_SESSION['tendangnhap']
 
 
         }
+        
+        function xacNhanKhoa(url){
+
+            if(confirm("Xác nhận khóa tài khoản")){
+                window.location  = url;
+            }
+
+
+        }
+        
+        function xacNhanMoKhoa(url){
+
+            if(confirm("Xác nhận mở khóa tài khoản")){
+                window.location  = url;
+            }
+
+
+        }
+        
+        function xacNhanRefresh(url){
+
+            if(confirm("Xác nhận refresh mật khẩu")){
+                window.location  = url;
+            }
+
+
+        }
     </script>
     <div class="menu_qltk">
         <a href="index.php">Quản lí sản phẩm</a>
+        <a href="quanlyloai.php">Quản lí loại</a>
         <a href="quanlytaikhoan.php">Quản lí tài khoản</a>
         <a href="quanlydonhang.php">Quản lí đơn hàng</a>
         <a href="thongke.php">Thống kê</a>
+        <a href="suathongtin.php">Sửa thông tin</a>
         <div style="text-align: right;">Xin chào <?php echo $ho_ten; ?> <a style="text-decoration: none; line-height: 45px;" href="dangxuat.php">&emsp;Đăng xuất</a></div>
     </div>
     <div class="tieude">Quản lí khách hàng</div>
     <table>
-        <tr>f
+        <tr>
             <th><a href="#">STT</a></th>
             <th><a href=<?php echo '"quanlytaikhoan.php?muc_sapxep=ID&loai='.$link_loai.'"'; ?>>Mã khách hàng <i class="fas fa-sort"></i></a> </th>
             <th><a href=<?php echo '"quanlytaikhoan.php?muc_sapxep=TEN_DANG_NHAP&loai='.$link_loai.'"'; ?>>Tên đăng nhập <i class="fas fa-sort"></i></a></th>
@@ -157,7 +186,14 @@ $ho_ten = (isset($_SESSION['tendangnhap']) == 'true') ? $_SESSION['tendangnhap']
                         <td>'.$row["HO_TEN"].'</td>
                         <td>'.$row["SDT"].'</td>
                         <td>'.$row["TRANG_THAI"].'</td>
-                        <td><button class="btn-xoa" onclick="xacnhan(\'xoa_taikhoan.php?makhachhang='.$row['ID'].'\')">Xóa</button></td>
+                        <td><br><button class="btn-xoa" onclick="xacnhan(\'xoa_taikhoan.php?makhachhang='.$row['ID'].'\')">Xóa</button><br><br>';
+                            if($row["KHOA"]==1){
+                                echo '<button class="btn-xoa" onclick="xacNhanMoKhoa(\'mo_taikhoan.php?makhachhang='.$row['ID'].'\')">Mở</button><br><br>';
+                            } else {
+                                echo '<button class="btn-xoa" onclick="xacNhanKhoa(\'khoa_taikhoan.php?makhachhang='.$row['ID'].'\')">Khóa</button><br><br>';
+                            }
+                        echo '<button class="btn-xoa" onclick="xacNhanRefresh(\'refresh_taikhoan.php?makhachhang='.$row['ID'].'\')">Refresh</button><br><br>
+                        </td>
                     </tr>';
             }
 

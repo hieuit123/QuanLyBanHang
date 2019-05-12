@@ -1,5 +1,4 @@
 
-
 <?php 
 session_start();
 if($_SESSION["login"] != "true" || $_SESSION["quyen"] != 0){
@@ -106,6 +105,9 @@ $ho_ten = (isset($_SESSION['tendangnhap']) == 'true') ? $_SESSION['tendangnhap']
      else{
         $link_loai  = "ASC";
      }
+// Start lấy ra loiaj sản phẩm
+    $sql_loai = "SELECT * FROM loaisanpham";
+    $result_loai = mysqli_query($conn,$sql_loai);
 
      $sql = "SELECT * FROM sanpham ORDER BY ".$sapxep_muc." ".$loai." LIMIT ".$page." , 8 ";
      $sql_soluong = "SELECT COUNT(MA) as SO_LUONG FROM sanpham";
@@ -129,9 +131,11 @@ $ho_ten = (isset($_SESSION['tendangnhap']) == 'true') ? $_SESSION['tendangnhap']
     </script>
     <div class="menu_admin">
         <a href="index.php">Quản lí sản phẩm</a>
+        <a href="quanlyloai.php">Quản lí loại</a>
         <a href="quanlytaikhoan.php">Quản lí tài khoản</a>
         <a href="quanlydonhang.php">Quản lí đơn hàng</a>
         <a href="thongke.php">Thống kê</a>
+        <a href="suathongtin.php">Sửa thông tin</a>
         <div style="text-align: right;">Xin chào <?php echo $ho_ten; ?> !
             <a style="text-decoration: none; line-height: 45px;" href="dangxuat.php">&emsp;Đăng xuất</a>
         </div>
@@ -166,23 +170,41 @@ $ho_ten = (isset($_SESSION['tendangnhap']) == 'true') ? $_SESSION['tendangnhap']
             }
         ?>
     </table>
-    <?php
+    <?php 
     $sotrang = ceil($so_luong_int/8);
+                     if($page/8 > 2){
+                     $trangbatdau = ($page/8)-2;
+                     $trangketthuc = $trangbatdau + 5;
+                     }
+                     else{
+                        $trangbatdau = 0;
+                        $trangketthuc = $trangbatdau + 5;
+                     }
+
+                     if( ($page/8) == ($sotrang-2) || ($page/8) == ($sotrang-1) ){
+                        $trangbatdau -= 2;
+                        $trangketthuc = $sotrang;
+                    }
                        echo '</div>
                         <!--page nav-->
-                            <div class="row">
+                            <div class="row page_nav_row_1">
+
                             <div class="col">
                                 <div class="page_nav_1">
+
                                     <ul class="d-flex flex-row align-items-start justify-content-center">';
-                                        for($i = 0; $i < $sotrang ; $i++){
+                                    if($page != 0) echo '<li><a href="index.php?pg='.($page-8).'"><-</a></li>';
+
+                                        for($i = $trangbatdau; $i < $trangketthuc ; $i++){
                                             $vitri = ($i * 8);
                                             if($page == $vitri){
-                                                echo '<a class="active">'.($i+1).'</a>';
+                                                echo '<li class="active"><a>' . ($i+1) . '</a></li>';
                                             }
                                             else{
-                                                echo '<a id="so-trang" href="index.php?pg='.$vitri.'">'.($i+1). '</a></li>';
+                                                echo '<li><a href="index.php?pg='.$vitri.'">' . ($i+1) . '</a></li>';
                                             }
                                         }
+                                    if($page/8 != $sotrang-1) echo '<li><a href="index.php?pg='.($page+8).'">-></a></li>';
                                     echo '</ul>
                                 </div>
                             </div>
@@ -219,13 +241,10 @@ $ho_ten = (isset($_SESSION['tendangnhap']) == 'true') ? $_SESSION['tendangnhap']
 
                     <select id="phanloai" name="phanloai">
                         <option value="" selected>[Lựa chọn]</option>
-                        <option value="ao">Áo</option>
-                        <option value="quan">Quần</option>
-                        <option value="non">Nón</option>
-                        <option value="giay">Giày</option>
-                        <option value="aokhoac">Áo khoác</option>
-                        <option value="daynit">Dây nịt</option>
-                        <option value="dongho">Đồng hồ</option>
+                        <?php 
+                            while ( $row_loai = $result_loai->fetch_assoc() ) {
+                                echo '<option value="'.$row_loai["MA_LOAI"].'">'.$row_loai["TEN_LOAI"].'</option>';
+                            } ?>
                     </select>
                     
                     <div class="input_form"><input type="text" name="gia"></div>

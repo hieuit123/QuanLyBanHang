@@ -132,9 +132,11 @@ $ho_ten = (isset($_SESSION['tendangnhap']) == 'true') ? $_SESSION['tendangnhap']
     </script>
     <div class="menu_qldh">
         <a href="index.php">Quản lí sản phẩm</a>
+        <a href="quanlyloai.php">Quản lí loại</a>
         <a href="quanlytaikhoan.php">Quản lí tài khoản</a>
         <a href="quanlydonhang.php">Quản lí đơn hàng</a>
         <a href="thongke.php">Thống kê</a>
+        <a href="suathongtin.php">Sửa thông tin</a>
         <div style="text-align: right;">Xin chào <?php echo $ho_ten; ?> <a style="text-decoration: none; line-height: 45px;" href="dangxuat.php">&emsp;Đăng xuất</a></div>
     </div>
     <div class="tieude">Quản lí đơn hàng</div>

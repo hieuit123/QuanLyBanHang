@@ -1,9 +1,17 @@
 <?php 
     session_start();
+	/////
+	include('create_connect_mysql.php');
+	$conn = create_connect();
+	$sql = "SELECT * FROM khachhang WHERE ID = ".$_SESSION['ma_khach_hang'];
+	$result = $conn->query($sql);
+	$row = $result->fetch_assoc();
+	if($row['KHOA'] == "1") {
+	echo '<script>alert("Tài khoản của bạn đã bị khóa!");window.location = "dangxuat.php";</script>';
+}
+	/////
     $ho_ten = (isset($_SESSION["tendangnhap"])) ? $_SESSION["tendangnhap"] : "";
     $makhachhang = (isset($_SESSION["ma_khach_hang"])) ? $_SESSION["ma_khach_hang"] : "";
-    include('create_connect_mysql.php');
-    $conn = create_connect();
     $sql = "SELECT * FROM donhang WHERE MA_KHACH_HANG = '".$makhachhang."'";
     $result = mysqli_query($conn,$sql);
 

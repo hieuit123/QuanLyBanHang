@@ -1,9 +1,13 @@
 <!-- Menu -->
- <?php 
- 			
+ <?php 	
+ 			include("create_connect_mysql.php");
             $check_login = (isset($_SESSION['login'])) ? $_SESSION['login'] : false;
             $ho_ten = (isset($_SESSION['tendangnhap']) == 'true') ? $_SESSION['tendangnhap'] : "";
-            $makhachhang = (isset($_SESSION['ma_khach_hang'])) ? $_SESSION['ma_khach_hang'] : "";  
+            $makhachhang = (isset($_SESSION['ma_khach_hang'])) ? $_SESSION['ma_khach_hang'] : "";
+     	   $conn = create_connect();  
+		    $sql_loai = "SELECT * FROM loaisanpham";
+		    $result_loai = mysqli_query($conn,$sql_loai);
+		    $conn->close();
        ?> 
 <div class="menu">
 
@@ -59,13 +63,20 @@
 			</div>
             <nav class="main_nav">
 				<ul class="d-flex flex-row align-items-start justify-content-start">
-					<li class="active"><li><a href="index.php?phanloai=ao&pg=0&form=sanpham&timkiem=false">Áo</a></li>
+					<!-- <li class="active"><li><a href="index.php?phanloai=ao&pg=0&form=sanpham&timkiem=false">Áo</a></li>
                     <li><a href="index.php?phanloai=quan&pg=0&form=sanpham&timkiem=false">Quần</a></li>
                     <li><a href="index.php?phanloai=non&pg=0&form=sanpham&timkiem=false">Nón</a></li>
                     <li><a href="index.php?phanloai=dongho&pg=0&form=sanpham&timkiem=false">Đồng hồ</a></li>
                     <li><a href="index.php?phanloai=giay&pg=0&form=sanpham&timkiem=false">Giày</a></li>
                     <li><a href="index.php?phanloai=daynit&pg=0&form=sanpham&timkiem=false">Dây nịt</a></li>
                     <li><a href="index.php?phanloai=aokhoac&pg=0&form=sanpham&timkiem=false">Áo khoác</a></li>
+					 --><?php 
+					$i=0;
+						while ($row_loai = $result_loai->fetch_assoc()){
+							if(++$i == 8) break;
+							echo '<li><a href="index.php?phanloai='.$row_loai["MA_LOAI"].'&pg=0&form=sanpham&timkiem=false">'.$row_loai["TEN_LOAI"].'</a></li>';
+						}
+					?>
 				</ul>
 			</nav>
 			<div class="header_right d-flex flex-row align-items-center justify-content-start ml-auto">

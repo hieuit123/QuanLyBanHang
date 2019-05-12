@@ -3,8 +3,7 @@
         function is_Empty($string){
             if($string == "") return true;
             return false;
-        }
-        
+        }        
         $formdangnhap = (isset($_GET['form_dangnhap'])) ? $formdangnhap = $_GET['form_dangnhap'] : null;
         $formdangky = (isset($_GET['form_dangky'])) ? $formdangky = $_GET['form_dangky'] : null;
         $form = (isset($_GET['form'])) ? $form = $_GET['form'] : null;    
@@ -41,7 +40,9 @@
 </head>
 <body> 
 
-    <?php include('header.php'); ?>
+    <?php 
+
+    include('header.php'); ?>
    <div class="super_container_inner" id="ok3conde">
     <div class="super_overlay"></div>
     <!-- Home -->
@@ -54,7 +55,7 @@
        else if($formdangky) include('dangky.php');
        else if($form == 'sanpham')  include('loadsanpham.php'); 
        else {
-    include('load_trangchu.php');
+      include('load_trangchu.php');
      } 
        ?>
         
@@ -80,9 +81,9 @@
 <script>
   function laySPTimKiem(e){
     var dl_timkiem = document.getElementById("dl_timkiem").value;
-    temp = new RegExp("[\\w\\s]{1,}$");
+    temp = new RegExp("['\"]{1,}$");
     kt_timkiem = temp.test(dl_timkiem);
-    if(!kt_timkiem){
+    if(kt_timkiem == true){
       alert("Dữ liệu tìm kiếm không hợp lệ !");
       return false;
     }

@@ -1,14 +1,15 @@
 
-<?php 
-	 include('create_connect_mysql.php');
+<?php
+     include('connect.php');
      $page = (isset($_GET['pg']) == true) ? $_GET['pg'] : 0;
-     $conn = create_connect();
+     $conn = create_connect_mysql();
      $sql = "SELECT * FROM sanpham  LIMIT ".$page." , 8";
      $sql_soluong = "SELECT COUNT(MA) as SO_LUONG FROM sanpham";
      $result_soluong = $conn->query($sql_soluong);
      $row_soluong = $result_soluong->fetch_assoc();
      $so_luong_int = $row_soluong['SO_LUONG'];
 	 $result = $conn->query($sql);
+
 
         if(isset($_GET['pg']) == false){
 		include('banner.php');
@@ -56,10 +57,18 @@
                     $sotrang = ceil($so_luong_int/8);
                      if($page/8 > 2){
                      $trangbatdau = ($page/8)-2;
+                     $trangketthuc = $trangbatdau + 5;
                      }
                      else{
                         $trangbatdau = 0;
+                        $trangketthuc = $trangbatdau + 5;
                      }
+
+                     if( ($page/8) == ($sotrang-2) || ($page/8) == ($sotrang-1) ){
+                        $trangbatdau -= 2;
+                        $trangketthuc = $sotrang;  
+                     }
+
  	                   echo '</div>
                         <!--page nav-->
                             <div class="row page_nav_row_1">
@@ -67,9 +76,11 @@
                             <div class="col">
                                 <div class="page_nav_1">
 
-                                    <ul class="d-flex flex-row align-items-start justify-content-center"><li><a href="index.php?pg='.($page-8).'"><-</a></li>';
+                                    <ul class="d-flex flex-row align-items-start justify-content-center">';
 
-                                        for($i = $trangbatdau; $i < ($trangbatdau+5) ; $i++){
+                                    if($page != 0) echo '<li><a href="index.php?pg='.($page-8).'"><-</a></li>';
+
+                                        for($i = $trangbatdau; $i < $trangketthuc ; $i++){
                                             $vitri = ($i * 8);
                                             if($page == $vitri){
                                                 echo '<li class="active"><a>' . ($i+1) . '</a></li>';
@@ -78,7 +89,8 @@
                                                 echo '<li><a href="index.php?pg='.$vitri.'">' . ($i+1) . '</a></li>';
                                             }
                                         }
-                                    echo '<li><a href="index.php?pg='.($page+8).'">-></a></li></ul>
+                                    if($page/8 != $sotrang-1) echo '<li><a href="index.php?pg='.($page+8).'">-></a></li>';
+                                    echo '</ul>
                                 </div>
                             </div>
                         </div>

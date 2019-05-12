@@ -42,9 +42,9 @@ if($kt_dachon == 'true'){
     echo '<script>alert("Đã thêm vào giỏ hàng thành công!");</script>';
     $_SESSION['dachon'] = 'false';
 }
-include('create_connect_mysql.php');
+include('connect.php');
 $ma_sanpham = (isset($_GET['idsanpham'])) ? $_GET['idsanpham'] : null;
-$conn = create_connect();
+$conn = create_connect_mysql();
 $sql = "SELECT * FROM sanpham,loaisanpham WHERE MA = '".$ma_sanpham."' AND sanpham.MA_LOAI=loaisanpham.MA_LOAI";
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();

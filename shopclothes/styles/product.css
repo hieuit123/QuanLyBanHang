@@ -3,6 +3,7 @@
 
 /******************************
 
+
 [Table of Contents]
 
 1. Fonts
@@ -30,7 +31,8 @@
 
 /*********************************
 2. Body and some general stuff
-*********************************/
+********************************
+*/
 
 *
 {
@@ -787,7 +789,6 @@ section
 
 .product
 {
-	background: #FFFFFF;
 	padding-top: 99px;
 	padding-bottom: 31px;
 }
